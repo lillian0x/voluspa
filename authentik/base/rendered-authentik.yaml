@@ -90,7 +90,7 @@ metadata:
     helm.sh/chart: postgresql-16.7.27
 type: Opaque
 data:
-  postgres-password: "SnJHNWVCVkdYaQ=="
+  postgres-password: "VE9BVlhQcllDSg=="
   password: "JHtQR19QQVNTV09SRH0="
   # We don't auto-generate LDAP password when it's not provided as we do for other passwords
 ---
@@ -846,7 +846,7 @@ metadata:
     app.kubernetes.io/version: "2026.2.3"
 spec:
   rules:
-    - host: "authentik.example.com"
+    - host: "auth.lillian0x.com"
       http:
         paths:
           - path: '/'
