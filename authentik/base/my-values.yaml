@@ -1,9 +1,17 @@
 authentik:
   secret_key: "${SECRET_KEY}"
   postgresql:
-    password: "${PG_PASSWORD}"
+    host: "authentik-postgres-rw"
+    name: "authentik"
+    user: "authentik"
 server:
   replicas: 2
+  env:
+    - name: AUTHENTIK_POSTGRESQL__PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: "authentik-postgres-app"
+          key: "password"
   ingress:
     enabled: true
     hosts:
@@ -11,10 +19,8 @@ server:
     tls:
       - secretName: authentik-tls
         hosts:
-          - authentik.example.com
+          - auth.lillian0x.com
 worker:
   replicas: 2
 postgresql:
-  enabled: true
-  auth:
-    password: "${PG_PASSWORD}"
+  enabled: false
