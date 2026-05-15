@@ -1,0 +1,20 @@
+authentik:
+  secret_key: "${SECRET_KEY}"
+  postgresql:
+    password: "${PG_PASSWORD}"
+server:
+  replicas: 2
+  ingress:
+    enabled: true
+    hosts:
+      - authentik.example.com
+    tls:
+      - secretName: authentik-tls
+        hosts:
+          - authentik.example.com
+worker:
+  replicas: 2
+postgresql:
+  enabled: true
+  auth:
+    password: "${PG_PASSWORD}"
