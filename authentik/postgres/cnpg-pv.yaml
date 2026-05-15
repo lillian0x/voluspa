@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: authentik-postgres-pv
+spec:
+  capacity:
+    storage: 20Gi # 使用したい容量
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain # 誤って削除してもホストのデータは保護する
+  hostPath:
+    path: /ctr/postgres # 👈 ここに直接書き込まれます
