@@ -7,7 +7,7 @@ server:
   ingress:
     enabled: true
     hosts:
-      - authentik.example.com
+      - auth.lillian0x.com
     tls:
       - secretName: authentik-tls
         hosts:
