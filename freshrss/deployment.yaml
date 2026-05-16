@@ -36,6 +36,8 @@ spec:
               value: "pgsql"
             - name: FRESHRSS_DB_HOST
               value: "freshrss-postgres-rw.freshrss.svc.cluster.local"
+            - name: "FRESHRSS_DB_PORT"
+              value: "5432"
             - name: FRESHRSS_DB_BASE
               value: "freshrss"
             - name: FRESHRSS_DB_USER
