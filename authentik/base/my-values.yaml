@@ -21,7 +21,21 @@ server:
       - secretName: authentik-tls
         hosts:
           - auth.lillian0x.com
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "100m"
+    limits:
+      memory: "1Gi"
+      cpu: "1000m"
 worker:
   replicas: 2
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "100m"
+    limits:
+      memory: "1Gi"
+      cpu: "1000m"
 postgresql:
   enabled: false
