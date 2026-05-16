@@ -381,6 +381,11 @@ spec:
           args:
             - worker
           env:
+            - name: AUTHENTIK_POSTGRESQL__PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: authentik-postgres-app
             - name: AUTHENTIK_LISTEN__HTTP
               value: "0.0.0.0:9000"
             - name: AUTHENTIK_LISTEN__METRICS
