@@ -4,14 +4,15 @@ authentik:
     host: "authentik-postgres-rw"
     name: "authentik"
     user: "authentik"
-server:
-  replicas: 2
+global:
   env:
     - name: AUTHENTIK_POSTGRESQL__PASSWORD
       valueFrom:
         secretKeyRef:
           name: "authentik-postgres-app"
           key: "password"
+server:
+  replicas: 2
   ingress:
     enabled: true
     hosts:
