@@ -40,6 +40,11 @@ spec:
               value: "freshrss"
             - name: FRESHRSS_DB_USER
               value: "freshrss"
+            - name: FRESHRSS_DB_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: freshrss-postgres-app
+                  key: password
           ports:
             - containerPort: 80
               name: http
