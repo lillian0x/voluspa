@@ -323,7 +323,12 @@ spec:
             successThreshold: 1
             timeoutSeconds: 3
           resources:
-            {}
+            limits:
+              cpu: 1000m
+              memory: 1Gi
+            requests:
+              cpu: 100m
+              memory: 512Mi
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
@@ -434,7 +439,12 @@ spec:
             successThreshold: 1
             timeoutSeconds: 3
           resources:
-            {}
+            limits:
+              cpu: 1000m
+              memory: 1Gi
+            requests:
+              cpu: 100m
+              memory: 512Mi
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
