@@ -77,7 +77,7 @@ kind: ConfigMap
 metadata:
   name: vmagent-config
   namespace: victoria-metrics
-spec:
+data:
   vmagent.yml: |
     global:
       scrape_interval: 15s
