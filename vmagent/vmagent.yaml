@@ -83,23 +83,6 @@ spec:
       scrape_interval: 15s
 
     scrape_configs:
-      # 1. k3sノード自体のメトリクス（CPUやメモリなど）を取得
-      - job_name: 'kubernetes-nodes'
-        kubernetes_sd_configs:
-          - role: node
-        scheme: https
-        tls_config:
-          ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
-          insecure_skip_verify: true
-        bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
-
-      # 2. 各Podやコンテナのより詳細な統計（cAdvisor）を取得
-      - job_name: 'kubernetes-cadvisor'
-        kubernetes_sd_configs:
-          - role: node
-        scheme: https
-        metrics_path: /metrics/cadvisor
-        tls_config:
-          ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
-          insecure_skip_verify: true
-        bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+      - job_name: 'vmagent'
+        static_configs:
+          - targets: ['localhost:8429']
