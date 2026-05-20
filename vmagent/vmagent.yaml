@@ -86,3 +86,6 @@ data:
       - job_name: 'vmagent'
         static_configs:
           - targets: ['localhost:8429']
+      - job_name: 'victoria-metrics'
+        static_configs:
+          - targets: ['victoria-metrics.victoria-metrics.svc.cluster.local:8428']
