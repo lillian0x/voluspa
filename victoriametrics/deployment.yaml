@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: victoria-metrics
-          image: victoriametrics/victoria-metrics:labels
+          image: victoriametrics/victoria-metrics:latest
           args:
             - "-storageDataPath=/storage"
             - "-retentionPeriod=1"
