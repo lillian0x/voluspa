@@ -20,7 +20,8 @@ spec:
             - containerPort: 5230
               protocol: TCP
           env:
-            - MEMOS_PORT: 5230
+            - name: MEMOS_PORT
+              value: "5230"
             - name: PUID
               value: "1000"
             - name: PGID
