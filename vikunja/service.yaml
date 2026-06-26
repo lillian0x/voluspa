@@ -7,4 +7,5 @@ spec:
   selector:
     app: vikunja
   ports:
-    - port: 3456
+    - port: 80
+      tagetPort: 3456
