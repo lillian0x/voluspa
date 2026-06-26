@@ -3,8 +3,6 @@ kind: Service
 metadata:
   name: "ezbookkeeping"
   namespace: "ezbookkeeping"
-  labels:
-    app: "ezbookkeeping"
 spec:
   ports:
     - port: 80
