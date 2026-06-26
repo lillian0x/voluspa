@@ -21,7 +21,7 @@ spec:
         runAsGroup: 1000
         fsGroup: 1000
       containers:
-      - image: "mayswind/ezbookkeeping:latest" # you can set specific version here (e.g. 1.2.0) for manual update control
+      - image: "mayswind/ezbookkeeping:1.5.1"
         name: "ezbookkeeping"
         env:
         - name: EBK_SECURITY_SECRET_KEY
