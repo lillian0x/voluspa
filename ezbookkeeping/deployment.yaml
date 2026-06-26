@@ -29,10 +29,6 @@ spec:
             secretKeyRef:
               name: "ezbookkeeping-secret"
               key: EBK_SECURITY_SECRET_KEY
-        - name: EBK_SERVER_PROTOCOL
-          value: "http"  # Ingress will handle HTTPS termination
-        - name: EBK_SERVER_DOMAIN
-          value: "ezbookkeeping.lillian0x.com"
         - name: EBK_SERVER_ENABLE_GZIP
           value: "true"
         - name: EBK_LOG_MODE
