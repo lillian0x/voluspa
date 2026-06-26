@@ -7,9 +7,6 @@ metadata:
   labels:
     app: "ezbookkeeping"
 spec:
-  selector:
-    matchLabels:
-      pv-for: "ezbookkeeping-data"
   accessModes:
     - ReadWriteOnce
   resources:
@@ -25,9 +22,6 @@ metadata:
   labels:
     app: "ezbookkeeping"
 spec:
-  selector:
-    matchLabels:
-      pv-for: "ezbookkeeping-storage"
   accessModes:
     - ReadWriteOnce
   resources:
