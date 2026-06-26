@@ -22,7 +22,6 @@ spec:
         fsGroup: 1000
       containers:
       - image: "mayswind/ezbookkeeping:latest" # you can set specific version here (e.g. 1.2.0) for manual update control
-        imagePullPolicy: Always # Required for "latest" tag to ensure fresh image pulls. Use "IfNotPresent" for specific versions
         name: "ezbookkeeping"
         env:
         - name: EBK_SECURITY_SECRET_KEY
