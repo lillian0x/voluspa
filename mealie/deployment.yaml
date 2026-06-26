@@ -31,6 +31,19 @@ spec:
               value: "sqlite"
             - name: BASE_URL
               value: "http://mealie.lillian0x.com"
+            - name: OIDC_AUTH_ENABLED
+              value: true
+            - name: OIDC_CONFIGURATION_URL
+              value: https://auth.lillian0x.com/.well-known/openid-configuration
+            - name: OIDC_ADMIN_GROUP
+              value: "admin"
+            - name: OIDC_CLIENT_ID
+              value: "0e24e441-30e6-4210-bd14-9734c9a81c6a"
+            - name: OIDC_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: mealie-secret
+                  key: OIDC_CLIENT_SECRET
           volumeMounts:
             - name: mealie-data
               mountPath: /app/data/
