@@ -1,0 +1,8 @@
+vikunja:
+  configMaps:
+    config:
+      enabled: true
+      data:
+        config.yml:
+          service:
+            enableregistration: false

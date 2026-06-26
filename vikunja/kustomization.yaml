@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: vikunja
+
+helmCharts:
+  - name: vikunja
+    repo: oci://ghcr.io/go-vikunja/helm-chart
+    releaseName: vikunja
+    namespace: vikunja
+    version: 2.0.2
+    valuesFile: values.yaml
