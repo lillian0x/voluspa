@@ -6,7 +6,6 @@ metadata:
   labels:
     app: "ezbookkeeping"
 spec:
-  clusterIP: None
   ports:
     - port: 80
       targetPort: 8080
