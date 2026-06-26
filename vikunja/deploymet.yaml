@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vikunja
+  namespace: vikunja
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vikunja
+  template:
+    metadata:
+      labels:
+        app: vikunja
+    spec:
+      containers:
+        - name: vikunja
+          image: vikunja/vikunja:latest
+          ports:
+            - containerPort: 3456
+          env:
+            - name: VIKUNJA_DATABASE_TYPE
+              value: sqlite
+            - name: VIKUNJA_SERVICE_JWTSECRET
+              valueFrom:
+                secretKeyRef:
+                  name: vikunja-secret
+                  key: VIKUNJA_SERVICE_JWTSECRET
+            - name: VIKUNJA_SERVICE_FRONTENDURL
+              value: https://vikunja.lillian0x.com/
+          volumeMounts:
+            - mountPath: /app/vikunja/files
+              name: vikunja-data
+      volumes:
+        - name: vikunja-data
+          persistentVolumeClaim:
+            claimName: vikunja-data-pvc
