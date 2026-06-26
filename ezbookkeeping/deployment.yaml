@@ -21,7 +21,7 @@ spec:
         runAsGroup: 1000
         fsGroup: 1000
       containers:
-      - image: "mayswind/ezbookkeeping:1.5.1"
+      - image: "mayswind/ezbookkeeping:1.5.0"
         name: "ezbookkeeping"
         env:
         - name: EBK_SECURITY_SECRET_KEY
