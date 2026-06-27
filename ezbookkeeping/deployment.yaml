@@ -31,6 +31,8 @@ spec:
           value: "true"
         - name: EBK_LOG_MODE
           value: "console" # Logs are collected from stdout/stderr in Kubernetes and can be accessed via "kubectl logs"
+        - name: EBK_SERVER_DOMAIN
+          value: "ezbookkeeping.lillian0x.com"
         - name: EBK_SERVER_ROOT_URL
           value: "https://ezbookkeeping.lillian0x.com"
         - name: EBK_AUTH_ENABLE_OAUTH2_AUTH
