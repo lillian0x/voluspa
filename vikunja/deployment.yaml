@@ -13,6 +13,8 @@ spec:
       labels:
         app: vikunja
     spec:
+      securityContext:
+        fsGroup: 1000
       containers:
         - name: vikunja
           image: vikunja/vikunja:latest
@@ -33,7 +35,12 @@ spec:
           volumeMounts:
             - mountPath: /db
               name: vikunja-data
+            - mountPath: /app/vikunja/files
+              name: vikunja-files
       volumes:
         - name: vikunja-data
           persistentVolumeClaim:
             claimName: vikunja-data-pvc
+        - name: vikunja-files
+          persistentVolumeClaim:
+            claimName: vikunja-files-pvc
