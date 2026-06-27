@@ -31,7 +31,7 @@ spec:
             - name: VIKUNJA_SERVICE_PUBLICURL
               value: https://vikunja.example.com/
           volumeMounts:
-            - mountPath: /app/vikunja/files
+            - mountPath: /db
               name: vikunja-data
       volumes:
         - name: vikunja-data
