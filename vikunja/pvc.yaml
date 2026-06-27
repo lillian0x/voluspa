@@ -7,4 +7,15 @@ spec:
   accessModes: [ReadWriteOnce]
   resources:
     requests:
-      storage: 10Gi
+      storage: 7Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: vikunja-files-pvc
+  namespace: vikunja
+spec:
+  accessModes: [ReadWriteOnce]
+  resources:
+    requests:
+      storage: 7Gi
