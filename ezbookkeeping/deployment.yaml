@@ -52,7 +52,7 @@ spec:
           value: "true"
         - name: EBK_AUTH_OIDC_CUSTOM_DISPLAY_NAME
           value: "Pocket ID"
-        - name: EBK_OAUTH2_USE_PKCE
+        - name: EBK_AUTH_OAUTH2_USE_PKCE
           value: "true"
         ports:
         - containerPort: 8080
