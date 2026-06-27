@@ -4,7 +4,7 @@ metadata:
   name: forgejo
   namespace: forgejo
 spec:
-  replicas: 1  # SQLite は単一レプリカ必須
+  replicas: 1
   selector:
     matchLabels:
       app: forgejo
@@ -25,11 +25,11 @@ spec:
             - name: FORGEJO__database__PATH
               value: /data/forgejo/forgejo.db
             - name: FORGEJO__server__DOMAIN
-              value: forgejo.lillian0x.com  # ← 変更
+              value: forgejo.lillian0x.com
             - name: FORGEJO__server__ROOT_URL
-              value: http://forgejo.lillian0x.com  # ← 変更
+              value: http://forgejo.lillian0x.com
             - name: FORGEJO__server__SSH_DOMAIN
-              value: forgejo.lillian0x.com  # ← 変更
+              value: forgejo.lillian0x.com
           volumeMounts:
             - name: data
               mountPath: /data
