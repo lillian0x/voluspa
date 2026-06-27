@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: forgejo
+  namespace: forgejo
+spec:
+  replicas: 1  # SQLite は単一レプリカ必須
+  selector:
+    matchLabels:
+      app: forgejo
+  template:
+    metadata:
+      labels:
+        app: forgejo
+    spec:
+      containers:
+        - name: forgejo
+          image: codeberg.org/forgejo/forgejo:11
+          ports:
+            - containerPort: 3000  # HTTP
+            - containerPort: 22    # SSH
+          env:
+            - name: FORGEJO__database__DB_TYPE
+              value: sqlite3
+            - name: FORGEJO__database__PATH
+              value: /data/forgejo/forgejo.db
+            - name: FORGEJO__server__DOMAIN
+              value: forgejo.lillian0x.com  # ← 変更
+            - name: FORGEJO__server__ROOT_URL
+              value: http://forgejo.lillian0x.com  # ← 変更
+            - name: FORGEJO__server__SSH_DOMAIN
+              value: forgejo.lillian0x.com  # ← 変更
+          volumeMounts:
+            - name: data
+              mountPath: /data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: forgejo-pvc
