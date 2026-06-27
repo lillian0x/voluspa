@@ -32,7 +32,7 @@ spec:
         - name: EBK_LOG_MODE
           value: "console" # Logs are collected from stdout/stderr in Kubernetes and can be accessed via "kubectl logs"
         - name: EBK_AUTH_ENABLE_OAUTH2_AUTH
-          value: true
+          value: "true"
         - name: EBK_AUTH_OAUTH2_PROVIDER
           value: "oidc"
         - name: EBK_AUTH_OAUTH2_CLIENT_ID
@@ -45,7 +45,7 @@ spec:
         - name: EBK_AUTH_OIDC_PROVIDER_BASE_URL
           value: "https://auth.lillian0x.com/.well-known/openid-configuration"
         - name: EBK_AUTH_ENABLE_OIDC_DISPLAY_NAME
-          value: true
+          value: "true"
         - name: EBK_AUTH_OIDC_CUSTOM_DISPLAY_NAME
           value: "Pocket ID"
         ports:
