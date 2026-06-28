@@ -26,10 +26,12 @@ spec:
             - name: YTDL_OPTIONS
               value: >
                 {
+
                   "format": "bv*+ba/b",
                   "writesubtitles": true,
                   "writeautomaticsub": true
                 }
+
           volumeMounts:
             - name: downloads
               mountPath: /downloads

@@ -4,7 +4,7 @@ metadata:
   name: cloudflared
   namespace: cloudflare
 spec:
-  replicas: 2          # HA構成（推奨）
+  replicas: 2 # HA構成（推奨）
   selector:
     matchLabels:
       app: cloudflared
@@ -25,7 +25,7 @@ spec:
             - 0.0.0.0:2000
             - run
             - --token
-            - $(TUNNEL_TOKEN)       # ← envから受け取る
+            - $(TUNNEL_TOKEN) # ← envから受け取る
           env:
             - name: TUNNEL_TOKEN
               valueFrom:
