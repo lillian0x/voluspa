@@ -5,6 +5,7 @@ metadata:
   namespace: ezbookkeeping
 data:
   EBK_LOG_MODE: "console"
+  EBK_USER_ENABLE_REGISTER: "true"
   EBK_SERVER_ENABLE_GZIP: "true"
   EBK_SERVER_DOMAIN: "ezbookkeeping.lillian0x.com"
   EBK_SERVER_ROOT_URL: "https://ezbookkeeping.lillian0x.com"
