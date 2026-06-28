@@ -17,8 +17,8 @@ spec:
         - name: forgejo
           image: codeberg.org/forgejo/forgejo:11
           ports:
-            - containerPort: 3000  # HTTP
-            - containerPort: 22    # SSH
+            - containerPort: 3000 # HTTP
+            - containerPort: 22 # SSH
           env:
             - name: FORGEJO__database__DB_TYPE
               value: sqlite3

@@ -19,28 +19,28 @@ spec:
         runAsGroup: 1000
         fsGroup: 1000
       containers:
-      - image: "mayswind/ezbookkeeping:1.5.0"
-        name: "ezbookkeeping"
-        envFrom:
-          - configMapRef:
-              name: ezbookkeeping-config
-          - secretRef:
-              name: ezbookkeeping-secret
-        ports:
-        - containerPort: 8080
-          name: ezbookkeeping
-        resources:
-          requests:
-            memory: "128Mi"
-            cpu: "100m"
-          limits:
-            memory: "1Gi"
-            cpu: "2"
-        volumeMounts:
-        - mountPath: "/ezbookkeeping/data" # SQLite database storage
-          name: "ezbookkeeping-data"
-        - mountPath: "/ezbookkeeping/storage" # User uploads storage
-          name: "ezbookkeeping-storage"
+        - image: "mayswind/ezbookkeeping:1.5.0"
+          name: "ezbookkeeping"
+          envFrom:
+            - configMapRef:
+                name: ezbookkeeping-config
+            - secretRef:
+                name: ezbookkeeping-secret
+          ports:
+            - containerPort: 8080
+              name: ezbookkeeping
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "1Gi"
+              cpu: "2"
+          volumeMounts:
+            - mountPath: "/ezbookkeeping/data" # SQLite database storage
+              name: "ezbookkeeping-data"
+            - mountPath: "/ezbookkeeping/storage" # User uploads storage
+              name: "ezbookkeeping-storage"
       volumes:
         - name: "ezbookkeeping-data"
           persistentVolumeClaim:
