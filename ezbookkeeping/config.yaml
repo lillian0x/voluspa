@@ -9,6 +9,7 @@ data:
   EBK_SERVER_ENABLE_GZIP: "true"
   EBK_SERVER_DOMAIN: "ezbookkeeping.lillian0x.com"
   EBK_SERVER_ROOT_URL: "https://ezbookkeeping.lillian0x.com"
+  EBK_AUTH_ENABLE_INTERNAL_AUTH: "false"
   EBK_AUTH_ENABLE_OAUTH2_AUTH: "true"
   EBK_AUTH_OAUTH2_PROVIDER: "oidc"
   EBK_AUTH_OAUTH2_CLIENT_ID: "468bb888-f680-4a8f-ad20-4c85be3ab3c1"
