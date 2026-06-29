@@ -11,4 +11,5 @@ data:
   OAUTH2_REDIRECT_URL: https://miniflux.lillian0x.com/oauth2/oidc/callback
   OAUTH2_OIDC_DISCOVERY_ENDPOINT: https://auth.lillian0x.com
   OAUTH2_OIDC_PROVIDER_NAME: PocketID
+  OAUTH2_USER_CREATION: 1
   # DISABLE_LOCAL_AUTH: 1 # optional, if you want to disable local authentication
