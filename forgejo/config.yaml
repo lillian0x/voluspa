@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: forgejo-config
+  namespace: forgejo
+data:
+  FORGEJO__database__DB_TYPE: sqlite3
+  FORGEJO__database__PATH: /data/forgejo/forgejo.db
+  FORGEJO__server__DOMAIN: forgejo.lillian0x.com
+  FORGEJO__server__ROOT_URL: http://forgejo.lillian0x.com
+  FORGEJO__server__SSH_DOMAIN: forgejo.lillian0x.com
