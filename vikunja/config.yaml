@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vikunja-config
+  namespace: vikunja
+data:
+  VIKUNJA_DATABASE_TYPE: sqlite
+  VIKUNJA_SERVICE_FRONTENDURL: https://vikunja.lillian0x.com/
+  VIKUNJA_SERVICE_PUBLICURL: https://vikunja.lillian0x.com/
