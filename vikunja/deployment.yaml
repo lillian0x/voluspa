@@ -20,18 +20,11 @@ spec:
           image: vikunja/vikunja:latest
           ports:
             - containerPort: 3456
-          env:
-            - name: VIKUNJA_DATABASE_TYPE
-              value: sqlite
-            - name: VIKUNJA_SERVICE_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: vikunja-secret
-                  key: VIKUNJA_SERVICE_SECRET
-            - name: VIKUNJA_SERVICE_FRONTENDURL
-              value: https://vikunja.lillian0x.com/
-            - name: VIKUNJA_SERVICE_PUBLICURL
-              value: https://vikunja.example.com/
+          envFrom:
+            - confifMapRef:
+                name: vikunja-config
+            - secretRef:
+                name: vikunja-secret
           volumeMounts:
             - mountPath: /db
               name: vikunja-data
