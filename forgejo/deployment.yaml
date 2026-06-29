@@ -20,7 +20,7 @@ spec:
             - containerPort: 3000 # HTTP
             - containerPort: 22 # SSH
           envFrom:
-            configMapRef:
+            - configMapRef:
               name: forgejo-config
           volumeMounts:
             - name: data
