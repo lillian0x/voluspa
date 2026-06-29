@@ -18,23 +18,8 @@ spec:
           image: miniflux/miniflux:latest
           ports:
             - containerPort: 8080
-          env:
-            - name: DATABASE_URL
-              valueFrom:
-                secretKeyRef:
-                  name: miniflux-secret
-                  key: DATABASE_URL
-            - name: ADMIN_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: miniflux-secret
-                  key: ADMIN_USERNAME
-            - name: ADMIN_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: miniflux-secret
-                  key: ADMIN_PASSWORD
-            - name: RUN_MIGRATIONS
-              value: "1"
-            - name: CREATE_ADMIN
-              value: "1"
+          envFrom:
+            - configMapRef:
+                name: miniflux-config
+            - secretRef:
+                name: miniflux-secret
