@@ -22,7 +22,7 @@ spec:
                 - name: PGPASSWORD
                   valueFrom:
                     secretKeyRef:
-                      name: homelab-pg-app
+                      name: postgres-cluster-app
                       key: password
               volumeMounts:
                 - name: backup-vol
