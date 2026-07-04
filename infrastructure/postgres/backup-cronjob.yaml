@@ -16,7 +16,7 @@ spec:
                 - /bin/bash
                 - -c
                 - >
-                  pg_dump -h homelab-pg-rw -U appuser -d appdb -F c
+                  pg_dump -h postgres-cluster-rw -U appuser -d appdb -F c
                   -f /backup/appdb-$(date +%Y%m%d-%H%M%S).dump
               env:
                 - name: PGPASSWORD
