@@ -26,6 +26,17 @@ spec:
                 name: ezbookkeeping-config
             - secretRef:
                 name: ezbookkeeping-secret
+          env:
+            - name: EBK_DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: ezbookkeeping-credentials
+                  key: username
+            - name: EBK_DATABASE_PASSWD
+              valueFrom:
+                secretKeyRef:
+                  name: ezbookkeeping-credentials
+                  key: password
           ports:
             - containerPort: 8080
               name: ezbookkeeping
