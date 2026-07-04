@@ -18,3 +18,10 @@ spec:
     initdb:
       database: appdb
       owner: appuser
+  managed:
+    roles:
+      - name: ezbookkeeping
+        ensure: present
+        login: true
+        passwordSecret:
+          name: ezbookkeeping-credentials
