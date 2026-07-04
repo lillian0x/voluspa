@@ -48,14 +48,9 @@ spec:
               memory: "1Gi"
               cpu: "2"
           volumeMounts:
-            - mountPath: "/ezbookkeeping/data" # SQLite database storage
-              name: "ezbookkeeping-data"
             - mountPath: "/ezbookkeeping/storage" # User uploads storage
               name: "ezbookkeeping-storage"
       volumes:
-        - name: "ezbookkeeping-data"
-          persistentVolumeClaim:
-            claimName: "ezbookkeeping-data-pvc"
         - name: "ezbookkeeping-storage"
           persistentVolumeClaim:
             claimName: "ezbookkeeping-storage-pvc"

@@ -1,18 +1,6 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: "ezbookkeeping-data-pvc"
-  namespace: "ezbookkeeping"
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 9Gi
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
   name: "ezbookkeeping-storage-pvc"
   namespace: "ezbookkeeping"
 spec:
