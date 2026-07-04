@@ -8,3 +8,14 @@ spec:
     name: postgres-cluster
   name: ezbookkeeping
   owner: ezbookkeeping
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: vikunja-db
+  namespace: postgres
+spec:
+  cluster:
+    name: postgres-cluster
+  name: vikunja
+  owner: vikunja

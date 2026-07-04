@@ -4,7 +4,9 @@ metadata:
   name: vikunja-config
   namespace: vikunja
 data:
-  VIKUNJA_DATABASE_TYPE: sqlite
+  VIKUNJA_DATABASE_TYPE: postgres
+  VIKUNJA_DATABASE_HOST: postgres-cluster-rw.postgres.svc.cluster.local:5432
+  VIKUNJA_DATABASE_DATABASE: vikunja
   VIKUNJA_SERVICE_FRONTENDURL: https://vikunja.lillian0x.com/
   VIKUNJA_SERVICE_PUBLICURL: https://vikunja.lillian0x.com/
   VIKUNJA_AUTH_LOCAL_ENABLED: "false"

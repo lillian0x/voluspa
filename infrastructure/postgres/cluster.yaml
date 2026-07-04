@@ -25,3 +25,8 @@ spec:
         login: true
         passwordSecret:
           name: ezbookkeeping-credentials
+      - name: vikunja
+        ensure: present
+        login: true
+        passwordSecret:
+          name: vikunja-credentials
