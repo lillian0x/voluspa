@@ -37,14 +37,9 @@ spec:
                   name: vikunja-credentials
                   key: password
           volumeMounts:
-            - mountPath: /db
-              name: vikunja-data
             - mountPath: /app/vikunja/files
               name: vikunja-files
       volumes:
-        - name: vikunja-data
-          persistentVolumeClaim:
-            claimName: vikunja-data-pvc
         - name: vikunja-files
           persistentVolumeClaim:
             claimName: vikunja-files-pvc
