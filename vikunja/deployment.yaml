@@ -25,6 +25,17 @@ spec:
                 name: vikunja-config
             - secretRef:
                 name: vikunja-secret
+          env:
+            - name: VIKUNJA_DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: vikunja-credentials
+                  key: username
+            - name: VIKUNJA_DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: vikunja-credentials
+                  key: password
           volumeMounts:
             - mountPath: /db
               name: vikunja-data
