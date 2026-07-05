@@ -30,3 +30,8 @@ spec:
         login: true
         passwordSecret:
           name: vikunja-credentials
+      - name: miniflux
+        ensure: present
+        login: true
+        passwordSecret:
+          name: miniflux-credentials

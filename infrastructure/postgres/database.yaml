@@ -19,3 +19,14 @@ spec:
     name: postgres-cluster
   name: vikunja
   owner: vikunja
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: miniflux-db
+  namespace: postgres
+spec:
+  cluster:
+    name: postgres-cluster
+  name: miniflux
+  owner: miniflux
