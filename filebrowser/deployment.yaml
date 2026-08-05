@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: filebrowser
+  namespace: filebrowser
+  labels:
+    app: filebrowser
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: filebrowser
+  template:
+    metadata:
+      labels:
+        app: filebrowser
+    spec:
+      containers:
+        - name: filebrowser
+          image: filebrowser/filebrowser:s6
+          ports:
+            - containerPort: 80
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "100"
+            - name: FB_ROOT
+              value: "/srv"
+          volumeMounts:
+            - name: data
+              mountPath: /srv
+            - name: database
+              mountPath: /database
+      volumes:
+        - name: data
+          hostPath:
+            path: /hdd
+            type: Directory
+
+        - name: database
+          hostPath:
+            path: /ctr/filebrowser/database
+            type: DirectoryOrCreate
