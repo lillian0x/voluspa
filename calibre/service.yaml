@@ -5,7 +5,7 @@ metadata:
   namespace: calibre
 spec:
   ports:
-  - port: 8083
+  - port: 80
     targetPort: 8083
   selector:
     app: calibre-web
