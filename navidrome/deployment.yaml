@@ -46,5 +46,5 @@ spec:
             claimName: navidrome-data-pvc
         - name: music
           hostPath:
-            path: /hdd/music
+            path: /hdd/share/music
             type: Directory
