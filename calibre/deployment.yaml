@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calibre-web
+  namespace: calibre
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: calibre-web
+  template:
+    metadata:
+      labels:
+        app: calibre-web
+    spec:
+      containers:
+      - name: calibre-web
+        image: lscr.io/linuxserver/calibre-web:latest
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "100"
+        - name: TZ
+          value: "Asia/Tokyo"
+        ports:
+        - containerPort: 8083
+          name: http
+        volumeMounts:
+        - name: config
+          mountPath: /config
+        - name: books
+          mountPath: /books
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: calibre-web-config-pvc
+      - name: books
+        hostPath:
+          path: /hdd/calibre
+          type: Directory
