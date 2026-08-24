@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: dashy
-          image: lissy93/dashy:4.6.0
+          image: lissy93/dashy:4.6.0 # {"$imagepolicy": "dashy:dashy-policy"}
           ports:
             - containerPort: 8080
           volumeMounts:
