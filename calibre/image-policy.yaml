@@ -1,0 +1,15 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: calibre-web-policy
+  namespace: calibre
+spec:
+  imageRepositoryRef:
+    name: calibre-web-repository
+  filterTags:
+    # 0.6.24-ls289 から '0.6.24' の部分を抜き出す正規表現
+    pattern: '^(?P<version>[0-9]+\.[0-9]+\.[0-9]+)-ls[0-9]+$'
+    extract: '$version'
+  policy:
+    semver:
+      range: '>=0.6.0'
