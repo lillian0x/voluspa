@@ -4,5 +4,5 @@ metadata:
   name: radicale-repository
   namespace: radicale
 spec:
-  image: docker.io/tomsquest/radicale
+  image: docker.io/tomsquest/docker-radicale
   interval: 1h
