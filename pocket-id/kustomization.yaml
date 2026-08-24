@@ -7,3 +7,5 @@ resources:
   - pvc.yaml
   - service.yaml
   - sealed-secret.yaml
+  - image-repository.yaml
+  - image-policy.yaml

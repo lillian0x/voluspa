@@ -1,0 +1,15 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: pocket-id-policy
+  namespace: pocket-id
+spec:
+  imageRepositoryRef:
+    name: pocket-id-repository
+  filterTags:
+    # v1.0.0 または 1.0.0 の形式にマッチし、バージョン数値のみ抽出
+    pattern: '^v?(?P<version>[0-9]+\.[0-9]+\.[0-9]+)$'
+    extract: '$version'
+  policy:
+    semver:
+      range: '>=2.13.0'
