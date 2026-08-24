@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: cloudflared
-          image: cloudflare/cloudflared:latest # {"$imagepolicy": "flux-system:cloudflared"}
+          image: cloudflare/cloudflared:2026.8.2 # {"$imagepolicy": "cloudflare:cloudflare-policy"}
           args:
             - tunnel
             - --no-autoupdate
