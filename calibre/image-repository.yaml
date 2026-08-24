@@ -1,0 +1,8 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: calibre-web-repository
+  namespace: calibre
+spec:
+  image: lscr.io/linuxserver/calibre-web
+  interval: 1h
