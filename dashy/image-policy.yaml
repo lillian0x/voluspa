@@ -1,0 +1,11 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: dashy-policy
+  namespace: dashy
+spec:
+  imageRepositoryRef:
+    name: dashy-repository
+  policy:
+    semver:
+      range: '>=4.5.0'
