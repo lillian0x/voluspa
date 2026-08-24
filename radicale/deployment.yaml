@@ -18,12 +18,14 @@ spec:
         image: tomsquest/docker-radicale:latest
         ports:
         - containerPort: 5232
+          env:
+            - name: RADICALE_CONFIG_SERVER_HOSTS
+              value: "0.0.0.0:5232"
+            - name: RADICALE_CONFIG_AUTH_TYPE
+              value: "htpasswd"
         volumeMounts:
         - name: data
           mountPath: /data
-        - name: config
-          mountPath: /etc/radicale/config
-          subPath: config
         - name: auth
           mountPath: /etc/radicale/users
           subPath: users
@@ -31,9 +33,6 @@ spec:
       - name: data
         persistentVolumeClaim:
           claimName: radicale-data
-      - name: config
-        configMap:
-          name: radicale-config
       - name: auth
         secret:
           secretName: radicale-auth
