@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: pocket-id
-          image: ghcr.io/pocket-id/pocket-id:v2.14.0
+          image: ghcr.io/pocket-id/pocket-id:v2.14.0 # {"$imagepolicy": "pocket-id:pocket-id-policy"}
           ports:
             - containerPort: 1411
               name: http
