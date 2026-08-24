@@ -11,7 +11,7 @@ spec:
     branch: main
   secretRef:
     name: flux-system
-  url: https://github.com/lillian0x/voluspa.git
+  url: ssh://git@github.com/lillian0x/voluspa
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
