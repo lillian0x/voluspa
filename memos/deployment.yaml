@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: memos
-          image: docker.io/neosmemo/memos:0.29
+          image: docker.io/neosmemo/memos:0.29 # {"$imagepolicy": "memos:memos-policy"}
           ports:
             - containerPort: 5230
               protocol: TCP
