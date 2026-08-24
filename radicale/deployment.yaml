@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: radicale
-        image: tomsquest/docker-radicale:3.7.5.0
+        image: tomsquest/docker-radicale:3.7.5.0 # {"$imagepolicy": "radicale:radicale-policy"}
         ports:
         - containerPort: 5232
         env:
