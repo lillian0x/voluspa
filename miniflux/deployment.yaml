@@ -18,6 +18,12 @@ spec:
           image: miniflux/miniflux:2.3.3 # {"$imagepolicy": "miniflux:miniflux-policy"}
           ports:
             - containerPort: 8080
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: miniflux-db-app
+                  key: uri
           envFrom:
             - configMapRef:
                 name: miniflux-config
