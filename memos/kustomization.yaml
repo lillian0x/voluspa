@@ -7,3 +7,4 @@ resources:
   - pvc.yaml
   - image-repository.yaml
   - image-policy.yaml
+  - ingress.yaml
