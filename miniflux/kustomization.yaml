@@ -9,3 +9,4 @@ resources:
   - image-repository.yaml
   - image-policy.yaml
   - cluster.yaml
+  - ingress.yaml
