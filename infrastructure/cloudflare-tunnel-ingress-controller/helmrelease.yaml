@@ -1,0 +1,28 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: cloudflare-tunnel-ingress-controller
+  namespace: cloudflare-tunnel-system
+spec:
+  interval: 30m
+
+  chart:
+    spec:
+      chart: cloudflare-tunnel-ingress-controller
+      sourceRef:
+        kind: HelmRepository
+        name: cloudflare-tunnel
+      interval: 1h
+
+  values:
+    cloudflare:
+      secretRef:
+        name: cloudflare-tunnel-credentials
+        accountIDKey: account_id
+        tunnelNameKey: tunnel_name
+        apiTokenKey: api_token
+
+    ingressClass:
+      name: cloudflare-tunnel
+      isDefaultClass: false
+
