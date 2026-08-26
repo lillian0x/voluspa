@@ -26,3 +26,9 @@ spec:
       name: cloudflare-tunnel
       isDefaultClass: false
 
+    cloudflared:
+      replicaCount: 2
+      pdb:
+        enabled: true
+        minAvailable: 1
+
