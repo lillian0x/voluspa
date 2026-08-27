@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  path: ./ntfy
+  path: ./platform/ntfy
   prune: true
   sourceRef:
     kind: GitRepository
