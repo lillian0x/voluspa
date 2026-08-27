@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  path: ./memos
+  path: ./applications/memos
   prune: true
   sourceRef:
     kind: GitRepository
