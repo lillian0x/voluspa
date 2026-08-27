@@ -13,6 +13,10 @@ spec:
         name: authentik
   values:
     authentik:
+      secret_key:
+        secretKeyRef:
+          name: authentik-secret
+          key: AUTHENTIK_SECRET_KEY
       postgresql:
         host:
           secretKeyRef:
@@ -22,8 +26,6 @@ spec:
           secretKeyRef:
             name: authentik-db-app
             key: password
-      existingSecret:
-        secretName: authentik-secret
     server:
       ingress:
         enabled: true
