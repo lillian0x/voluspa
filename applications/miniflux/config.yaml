@@ -7,7 +7,7 @@ data:
   RUN_MIGRATIONS: "1"
   OAUTH2_PROVIDER: oidc
   OAUTH2_CLIENT_ID: 5cec176e-8d48-4d64-bca2-e9c15afd70e7
-  OAUTH2_REDIRECT_URL: https://miniflux.lillian0x.com/oauth2/oidc/callback
+  OAUTH2_REDIRECT_URL: https://miniflux.x1d.uk/oauth2/oidc/callback
   OAUTH2_OIDC_DISCOVERY_ENDPOINT: https://auth.lillian0x.com
   OAUTH2_OIDC_PROVIDER_NAME: PocketID
   OAUTH2_USER_CREATION: "1"
