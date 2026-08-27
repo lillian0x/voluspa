@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  path: ./miniflux
+  path: ./applications/miniflux
   prune: true
   sourceRef:
     kind: GitRepository
