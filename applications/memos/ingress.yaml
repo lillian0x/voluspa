@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: cloudflare-tunnel
   rules:
-    - host: memos.lillian0x.com
+    - host: memos.x1d.uk
       http:
         paths:
           - path: /
