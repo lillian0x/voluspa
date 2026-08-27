@@ -6,7 +6,7 @@ metadata:
 data:
   server.yml: |
     # Server
-    base-url: "https://ntfy.lillian0x.com"
+    base-url: "https://ntfy.x1d.uk"
     
     # Access control
     auth-file: "/var/cache/ntfy/auth.db"
