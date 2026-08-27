@@ -12,20 +12,21 @@ spec:
         kind: HelmRepository
         name: authentik
   values:
-    authentik:
-      secret_key:
-        secretKeyRef:
-          name: authentik-secret
-          key: AUTHENTIK_SECRET_KEY
-      postgresql:
-        host:
-          secretKeyRef:
-            name: authentik-db-app
-            key: host
-        password:
-          secretKeyRef:
-            name: authentik-db-app
-            key: password
+    global:
+      envFrom:
+        - secretRef:
+            name: authentik-secret
+      env:
+        - name: AUTHENTIK_POSTGRESQL__PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: authentik-db-app
+              key: password
+        - name: AUTHENTIK_POSTGRESQL__HOST
+          valueFrom:
+            secretKeyRef:
+              name: authentik-db-app
+              key: host
     server:
       ingress:
         enabled: true
