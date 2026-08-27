@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  path: ./dashy
+  path: ./applications/dashy
   prune: true
   sourceRef:
     kind: GitRepository
