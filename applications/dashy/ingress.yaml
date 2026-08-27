@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: cloudflare-tunnel
   rules:
-    - host: dashy.lillian0x.com
+    - host: dashy.x1d.uk
       http:
         paths:
           - path: /
