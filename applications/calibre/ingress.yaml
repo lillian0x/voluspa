@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: cloudflare-tunnel
   rules:
-    - host: calibre.lillian0x.com
+    - host: calibre.x1d.uk
       http:
         paths:
           - path: /
