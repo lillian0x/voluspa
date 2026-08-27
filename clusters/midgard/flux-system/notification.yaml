@@ -18,5 +18,5 @@ spec:
   eventSeverity: info
   eventSources:
     - kind: ImagePolicy
-      name: '*'
-      namespace: '*'
+      name: miniflux-policy
+      namespace: miniflux
