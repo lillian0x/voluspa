@@ -1,0 +1,90 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: calibre
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: ./applications/calibre
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: dashy
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: ./applications/dashy
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: filebrowser
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: ./applications/filebrowser
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: memos
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: ./applications/memos
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: metube
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: ./applications/metube
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: miniflux
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: ./applications/miniflux
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: radicale
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: ./applications/radicale
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
