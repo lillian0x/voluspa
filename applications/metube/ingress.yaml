@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: cloudflare-tunnel
   rules:
-    - host: metube.lillian0x.com
+    - host: metube.x1d.uk
       http:
         paths:
           - path: /
