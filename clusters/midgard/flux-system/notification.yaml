@@ -20,3 +20,6 @@ spec:
     - kind: ImagePolicy
       name: '*'
       namespace: '*'
+    - kind: Kustomization
+      name: '*'
+      namespace: '*'
