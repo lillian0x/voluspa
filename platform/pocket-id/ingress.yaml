@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: cloudflare-tunnel
   rules:
-    - host: auth.lillian0x.com
+    - host: auth.x1d.uk
       http:
         paths:
           - path: /
