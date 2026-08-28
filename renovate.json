@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"]
+  "extends": ["config:recommended"],
   "packageRules": [
     {
       "matchDatasources": ["docker"],
@@ -8,7 +8,7 @@
         "lscr.io/linuxserver/calibre-web"
       ],
       "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-ls(?<build>\\d+)$"
-    }
+    },
     {
       "matchDatasources": ["docker"],
       "matchPackageNames": ["tomsquest/docker-radicale"],
