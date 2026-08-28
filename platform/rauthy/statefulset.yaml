@@ -82,8 +82,8 @@ spec:
               memory: 512Mi
       volumes:
         - name: rauthy-config
-          secret:
-            secretName: rauthy-config
+          configMap:
+            name: rauthy-config
   volumeClaimTemplates:
     - metadata:
         name: data
