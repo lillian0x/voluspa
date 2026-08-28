@@ -21,7 +21,7 @@ spec:
               name: http
           env:
             - name: APP_URL
-              value: "https://auth.lillian0x.com"
+              value: "https://auth.x1d.uk"
             - name: ENCRYPTION_KEY
               valueFrom:
                 secretKeyRef:
