@@ -17,10 +17,69 @@ spec:
   values:
     grafana:
       enabled: true
+      resources:
+        requests:
+          cpu: 50m
+          memory: 128Mi
+        limits:
+          cpu:200m
+        memory: 256Mi
+      persistance:
+        enabled: true
+        size: 1Gi
 
     prometheus:
       prometheusSpec:
-        retention: 15d
+        retention: 14d
+        retentionSize: 4GB
+        resources:
+          requests:
+            cpu: 100m
+            memory: 512Mi
+          limits:
+            cpu: 500m
+            memory: 1Gi
+        replicas: 1
+        scrapeInterval: 30s
+        evalutionInterval 30s
 
     alertmanager:
+      enabled: true
+      alertmanagerSpec:
+        replicas: 1
+        resources:
+          requests:
+            cpu: 20m
+            memory: 32Mi
+          limits:
+            cpu: 100m
+            memory: 64Mi
+
+    kube-state-metrics:
+      resources:
+        requests:
+          cpu: 10m
+          memory: 32Mi
+        limits:
+          cpu: 50m
+          memory: 64Mi
+
+    prometheus-node-exporter:
+      resources:
+        requests:
+          cpu: 10m
+          memory: 16Mi
+        limits:
+          cpu: 50m
+          memory 32Mi
+
+    kubeControllerManager:
+      enabled: false
+    kubeScheduler:
+      enabled: false
+    kubeEtcd:
+      enabled: false
+    kubeProxy:
+      enabled: false
+    kubelet:
       enabled: true
