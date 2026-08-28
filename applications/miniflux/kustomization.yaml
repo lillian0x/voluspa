@@ -6,7 +6,5 @@ resources:
   - deployment.yaml
   - service.yaml
   - sealed-secret.yaml
-  - image-repository.yaml
-  - image-policy.yaml
   - cluster.yaml
   - ingress.yaml

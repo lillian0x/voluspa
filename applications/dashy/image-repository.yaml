@@ -1,8 +1,0 @@
-apiVersion: image.toolkit.fluxcd.io/v1beta2
-kind: ImageRepository
-metadata:
-  name: dashy-repository
-  namespace: dashy
-spec:
-  image: docker.io/lissy93/dashy
-  interval: 1h

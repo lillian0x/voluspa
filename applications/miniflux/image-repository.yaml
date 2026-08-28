@@ -1,8 +1,0 @@
-apiVersion: image.toolkit.fluxcd.io/v1beta2
-kind: ImageRepository
-metadata:
-  name: miniflux-repository
-  namespace: miniflux
-spec:
-  image: docker.io/miniflux/miniflux
-  interval: 1h
