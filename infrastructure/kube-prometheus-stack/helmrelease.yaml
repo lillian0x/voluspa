@@ -27,6 +27,13 @@ spec:
       persistance:
         enabled: true
         size: 1Gi
+      ingress:
+        enabled: true
+        ingressClassName: cloudflare-tunnel
+        hosts:
+          - grafana.x1d.uk
+        path: /
+        pathType: Prefix
 
     prometheus:
       prometheusSpec:
