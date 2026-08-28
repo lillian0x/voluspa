@@ -22,8 +22,8 @@ spec:
           cpu: 50m
           memory: 128Mi
         limits:
-          cpu:200m
-        memory: 256Mi
+          cpu: 200m
+          memory: 256Mi
       persistance:
         enabled: true
         size: 1Gi
@@ -41,7 +41,7 @@ spec:
             memory: 1Gi
         replicas: 1
         scrapeInterval: 30s
-        evalutionInterval 30s
+        evalutionInterval: 30s
 
     alertmanager:
       enabled: true
@@ -71,7 +71,7 @@ spec:
           memory: 16Mi
         limits:
           cpu: 50m
-          memory 32Mi
+          memory: 32Mi
 
     kubeControllerManager:
       enabled: false
