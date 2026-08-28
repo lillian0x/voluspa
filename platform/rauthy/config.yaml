@@ -20,6 +20,4 @@ data:
     proxy_mode = false
     [webauthn]
     rp_id = "auth.x1d.uk"
-    # default: 'http://localhost:8080'
-    # overwritten by: RP_ORIGIN
-    # rp_origin = "https://auth.x1d.uk:443"
+    rp_origin = "https://auth.x1d.uk"
