@@ -9,5 +9,10 @@
       ],
       "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-ls(?<build>\\d+)$"
     }
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["tomsquest/docker-radicale"],
+      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)\\.(?<build>\\d+)$"
+    }
   ]
 }

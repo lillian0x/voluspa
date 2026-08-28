@@ -5,6 +5,4 @@ resources:
   - pvc.yaml
   - deployment.yaml
   - service.yaml
-  - image-repository.yaml
-  - image-policy.yaml
   - ingress.yaml
