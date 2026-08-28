@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rauthy-config
+  namespace: rauthy
+data:
+  config.toml |
+    [bootstrap]
+    admin_email = "admin@localhost"
+    [cluster]
+    node_id = 1
+    nodes = [
+        "1 localhost:8100 localhost:8200",
+        #    "2 localhost:8101 localhost:8201",
+        #    "3 localhost:8102 localhost:8202",
+    ]
+    [server]
+    scheme = "http"
+    # The Public URL of the whole deployment
+    # The LISTEN_SCHEME + PUB_URL must match the HTTP ORIGIN HEADER
+    # later on, which is especially important when running Rauthy
+    # behind a reverse proxy. In case of a non-standard port (80/443),
+    # you need to add the port to the PUB_URL
+    #
+    # default: not set - mandatory
+    # overwritten by: PUB_URL
+    pub_url = "localhost:8080"
+    proxy_mode = false
+    [webauthn]
+    # The 'Relaying Party (RP) ID' - effective domain name.
+    #
+    # CAUTION: When this changes, already registered devices will
+    # stop working and users cannot log in anymore!
+    #
+    # default: 'localhost'
+    # overwritten by: RP_ID
+    rp_id = "localhost"
+    # Url containing the effective domain name.
+    #
+    # DEV: If you want to test Webauthn via the Svelte DEV UI,
+    # change the port number to :5173.
+    #
+    # !!! CAUTION: Must ALWAYS include the port number !!!
+    #
+    # default: 'http://localhost:8080'
+    # overwritten by: RP_ORIGIN
+    rp_origin = "http://localhost:5173"

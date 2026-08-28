@@ -1,0 +1,95 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: rauthy
+  namespace: rauthy
+  labels:
+    app: rauthy
+spec:
+  serviceName: rauthy-headless
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rauthy
+  template:
+    metadata:
+      labels:
+        app: rauthy
+    spec:
+      securityContext:
+        fsGroup: 10001
+      containers:
+        - name: rauthy
+          image: ghcr.io/sebadob/rauthy:0.36.2
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            capabilities:
+              drop:
+                - ALL
+            # User ID 10001 is actually built into the container 
+            # at the creation for better security
+            runAsUser: 10001
+            runAsGroup: 10001
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+
+          ports:
+            # Hiqlite internal ports
+            - containerPort: 8100
+            - containerPort: 8200
+            # You may need to adjust this, if you decide to start 
+            # in https only mode or use another port
+            - containerPort: 8080
+            - containerPort: 8443
+
+          envFrom:
+            - secretRef:
+                name: rauthy-secret
+          volumeMounts:
+            - name: data
+              mountPath: /app/data
+              readOnly: false
+            - name: rauthy-config
+              mountPath: /app/config.toml
+              readOnly: true
+              subPath: config.toml
+
+          readinessProbe:
+            httpGet:
+              scheme: HTTP
+              port: 8200
+              path: /ready
+            initialDelaySeconds: 5
+            periodSeconds: 3
+            failureThreshold: 2
+
+          livenessProbe:
+            httpGet:
+              scheme: HTTP
+              # Rauthy API port
+              port: 8080
+              path: /auth/v1/health
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            failureThreshold: 2
+
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+      volumes:
+        - name: rauthy-config
+          secret:
+            secretName: rauthy-config
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 128Mi
