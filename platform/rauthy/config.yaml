@@ -20,4 +20,4 @@ data:
     proxy_mode = false
     [webauthn]
     rp_id = "auth.x1d.uk"
-    rp_origin = "https://auth.x1d.uk"
+    rp_origin = "https://auth.x1d.uk:443"
