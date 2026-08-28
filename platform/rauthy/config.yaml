@@ -16,7 +16,7 @@ data:
     ]
     [server]
     scheme = "http"
-    pub_url = "auth.x1d.uk:8080"
+    pub_url = "auth.x1d.uk"
     proxy_mode = false
     [webauthn]
     rp_id = "auth.x1d.uk"
