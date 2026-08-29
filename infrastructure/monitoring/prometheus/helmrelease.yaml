@@ -12,6 +12,6 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: prometheus
-  values:
-    grafana:
-      enabled: false
+  # values:
+  #   grafana:
+  #     enabled: false
