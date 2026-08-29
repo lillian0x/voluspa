@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: github-issue-config
+  namespace: monitoring
+  labels:
+    alertmanagerConfig: main
+spec:
+  route:
+    receiver: togithub
+  receivers:
+    - name: togithub
+      webhookConfigs:
+        - url: "http://alertmanager-to-github:80/v1/webhook?owner=lillian0x&repo=voluspa"
+          sendResolved: true
