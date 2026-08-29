@@ -7,11 +7,11 @@ spec:
   interval: 30m
   chart:
     spec:
-      chart: prometheus
+      chart: kube-prometheus-stack
       version: 29.27.0
       sourceRef:
         kind: HelmRepository
         name: prometheus
   values:
-    server:
-      retention: 15d
+    grafana:
+      enabled: false
