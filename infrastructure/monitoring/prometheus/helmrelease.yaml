@@ -13,3 +13,5 @@ spec:
         kind: HelmRepository
         name: prometheus
   value:
+    server:
+      retention: 15d
