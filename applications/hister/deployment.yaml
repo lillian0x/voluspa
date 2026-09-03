@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hister
+  namespace: hister
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hister
+  template:
+    metadata:
+      labels:
+        app: hister
+    spec:
+      containers:
+        - name: hister
+          image: ghcr.io/asciimoo/hister:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 4433
+          env:
+            - name: HISTER__SERVER__ADDRESS
+              value: "0.0.0.0:4433"
+            - name: HISTER__SERVER__BASE_URL
+              value: "http://hister.example.com"
+          volumeMounts:
+            - name: data
+              mountPath: /hister/data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: hister-data
