@@ -22,7 +22,7 @@ spec:
               containerPort: 4433
           env:
             - name: HISTER_PORT
-              value: 4433
+              value: "4433"
           volumeMounts:
             - name: data
               mountPath: /hister/data
