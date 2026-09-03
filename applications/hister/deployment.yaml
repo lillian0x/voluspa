@@ -21,10 +21,8 @@ spec:
             - name: http
               containerPort: 4433
           env:
-            - name: HISTER__SERVER__ADDRESS
-              value: "0.0.0.0:4433"
-            - name: HISTER__SERVER__BASE_URL
-              value: "http://hister.example.com"
+            - name: HISTER_PORT
+              value: 4433
           volumeMounts:
             - name: data
               mountPath: /hister/data
