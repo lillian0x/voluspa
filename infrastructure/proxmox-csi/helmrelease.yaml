@@ -1,0 +1,30 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: proxmox-csi-plugin
+  namespace: csi-proxmox
+spec:
+  interval: 30m
+  chartRef:
+    kind: OCIRepository
+    name: proxmox-csi-plugin
+  dependsOn:
+    - name: sealed-secrets   # sealed-secrets controllerが先にreadyであること
+      namespace: kube-system
+  values:
+    storageClass:
+      - name: proxmox-data-xfs
+        storage: data
+        reclaimPolicy: Delete
+        fstype: xfs
+        annotations:
+          storageclass.kubernetes.io/is-default-class: "true"
+    controller:
+      nodeSelector:
+        node-role.kubernetes.io/control-plane: ""
+      tolerations:
+        - key: node-role.kubernetes.io/control-plane
+          effect: NoSchedule
+    node:
+      tolerations:
+        - operator: Exists
