@@ -8,9 +8,6 @@ spec:
   chartRef:
     kind: OCIRepository
     name: proxmox-csi-plugin
-  dependsOn:
-    - name: sealed-secrets   # sealed-secrets controllerが先にreadyであること
-      namespace: kube-system
   values:
     storageClass:
       - name: proxmox-data-xfs
