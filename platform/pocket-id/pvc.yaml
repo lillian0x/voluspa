@@ -9,3 +9,16 @@ spec:
   resources:
     requests:
       storage: 2Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pocket-id-data
+  namespace: pocket-id
+spec:
+  storageClassName: proxmox-data-xfs
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
