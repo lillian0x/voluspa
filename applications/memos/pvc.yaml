@@ -10,3 +10,16 @@ spec:
     requests:
       storage: 5Gi
   storageClassName: local-path
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: memos-pvc
+  namespace: memos
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: proxmox-data-xfs
