@@ -10,3 +10,16 @@ spec:
     requests:
       storage: 1Gi
   storageClassName: local-path
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: dashy-data
+  namespace: dashy
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: proxmox-data-xfs
+  resources:
+    requests:
+      storage: 1Gi
