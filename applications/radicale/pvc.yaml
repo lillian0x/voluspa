@@ -9,3 +9,16 @@ spec:
   resources:
     requests:
       storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: radicale-pvc
+  namespace: radicale
+spec:
+  storageClassName: proxmox-data-xfs
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
