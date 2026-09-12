@@ -43,4 +43,4 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: pocket-id-pvc
+            claimName: pocket-id-data
