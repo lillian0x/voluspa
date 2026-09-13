@@ -7,6 +7,7 @@ metadata:
     app: filebrowser
 spec:
   replicas: 1
+  strategy: Recreate
   selector:
     matchLabels:
       app: filebrowser
@@ -17,17 +18,20 @@ spec:
     spec:
       containers:
         - name: filebrowser
-          image: filebrowser/filebrowser:s6
+          image: gtstef/filebrowser:latest
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
           ports:
             - containerPort: 80
-          env:
-            - name: PUID
-              value: "1000"
-            - name: PGID
-              value: "100"
-            - name: FB_ROOT
-              value: "/srv"
           volumeMounts:
+            - name: config
+              mountPath: /home/filebrowser/config.yaml
+              subPath: config.yaml
             - name: data
               mountPath: /srv
             - name: database
@@ -40,3 +44,6 @@ spec:
         - name: database
           persistentVolumeClaim:
             claimName: filebrowser-data
+        - name: config
+          configMap:
+            name: filebrowser-config
