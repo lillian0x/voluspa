@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: filebrowser-config
+  namespace: filebrowser
+data:
+  config.yaml: |
+    server:
+      port: 80
+      database: /database/filebrowser.db
+      sources:
+        - path: /srv
+          name: "NFS Share"
+          config:
+            defaultEnabled: true
+    auth:
+      methods:
+        password:
+          enabled: true
