@@ -34,7 +34,7 @@ spec:
       volumes:
       - name: config
         persistentVolumeClaim:
-          claimName: calibre-web-config-pvc
+          claimName: calibre-web-config-data
       - name: books
         hostPath:
           path: /hdd/calibre
