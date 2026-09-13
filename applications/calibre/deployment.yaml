@@ -36,6 +36,6 @@ spec:
         persistentVolumeClaim:
           claimName: calibre-web-config-data
       - name: books
-        hostPath:
-          path: /hdd/calibre
-          type: Directory
+        nfs:
+          server: 192.168.0.104
+          path: /mnt/hdd/calibre
