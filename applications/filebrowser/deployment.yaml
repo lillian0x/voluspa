@@ -29,6 +29,9 @@ spec:
               memory: "512Mi"
           ports:
             - containerPort: 80
+          envFrom:
+            - secretRef:
+                name: filebrowser-secret
           volumeMounts:
             - name: config
               mountPath: /home/filebrowser/data/config.yaml
