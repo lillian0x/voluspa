@@ -13,6 +13,7 @@ data:
           name: "NFS Share"
           config:
             defaultEnabled: true
+            defaultUserScope: "/share"
     auth:
       methods:
         oidc:
