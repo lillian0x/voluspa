@@ -31,7 +31,7 @@ spec:
             - containerPort: 80
           volumeMounts:
             - name: config
-              mountPath: /home/filebrowser/config.yaml
+              mountPath: /home/filebrowser/data/config.yaml
               subPath: config.yaml
             - name: data
               mountPath: /srv
