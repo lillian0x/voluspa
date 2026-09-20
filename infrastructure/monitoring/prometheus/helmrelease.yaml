@@ -12,6 +12,22 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: prometheus
-  # values:
-  #   grafana:
-  #     enabled: false
+  values:
+    grafana:
+      envFromSecret: grafana-secret
+      grafana.ini:
+        server:
+          root_url: https://grafana.x1d.uk
+        auth.generic_oauth:
+          enable: true
+          name: Pocket ID
+          client_id: 6abd55fe-f2ba-447f-a33e-83bff9fd50c1
+          client_secret: $__env{client-secret}
+          scopes: openid email profile
+          auth_url: https://auth.x1d.uk/authorize
+          token_url: https://auth.x1d.uk/api/oidc/token
+          allow_sign_up: true
+          auto_login: true
+          email_attribute_path: email
+          login_attribute_path: email
+          name_attribute_path: name
