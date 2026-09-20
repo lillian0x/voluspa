@@ -15,5 +15,11 @@ data:
             defaultEnabled: true
     auth:
       methods:
-        password:
+        oidc:
           enabled: true
+          clientId: "007aef65-57c3-4dce-8b3d-ae8b62c20219"
+          issuerUrl: "https://auth.x1d.uk"
+          scopes: "openid email profile"
+          adminGroup: "admin"
+        password:
+          enabled: false
