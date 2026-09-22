@@ -8,6 +8,7 @@ spec:
   storage:
     size: 10Gi
     storageClass: proxmox-data-xfs
+    volumeAttributesClassName: proxmox-data-xfs-backup
   resources:
     requests:
       cpu: "250m"
