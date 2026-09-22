@@ -6,3 +6,4 @@ resources:
   - osirepository.yaml
   - helmrelease.yaml
   - sealed-secret.yaml
+  - vac.yaml
