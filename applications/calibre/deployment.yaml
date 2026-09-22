@@ -37,5 +37,5 @@ spec:
           claimName: calibre-web-config-data
       - name: books
         nfs:
-          server: 192.168.0.104
+          server: 192.168.10.104
           path: /mnt/hdd/calibre
