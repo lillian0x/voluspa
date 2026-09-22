@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openwebui
+  namespace: openwebui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: openwebui
+  template:
+    metadata:
+      labels:
+        app: openwebui
+    spec:
+      containers:
+        - name: openwebui
+          image: ghcr.io/open-webui/open-webui:main
+          ports:
+            - containerPort: 8080
+          env:
+            - name: OPENAI_API_BASE_URL
+              value: "http://llama-server.openwebui.svc.cluster.local:8080/v1"
+            # llama-serverはAPIキー不要だが、open-webui側は値が必須なのでダミーを設定
+            - name: OPENAI_API_KEY
+              value: "sk-no-key-required"
+            # Ollama連携が不要なら無効化(任意)
+            - name: ENABLE_OLLAMA_API
+              value: "false"
+            # 動作確認をすぐしたい場合は認証を無効化(本番では削除推奨)
+            - name: WEBUI_AUTH
+              value: "false"
+          # volumeMounts:
+          #   - name: data
+          #     mountPath: /app/backend/data
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+      # volumes:
+      #   - name: data
+      #     persistentVolumeClaim:
+      #       claimName: openwebui-data
