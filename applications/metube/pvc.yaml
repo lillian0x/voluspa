@@ -10,3 +10,4 @@ spec:
     requests:
       storage: 10Gi
   storageClassNme: proxmox-data-xfs
+  volumeAttributesClassName: proxmox-data-xfs-backup

@@ -5,6 +5,7 @@ metadata:
   namespace: radicale
 spec:
   storageClassName: proxmox-data-xfs
+  volumeAttributesClassName: proxmox-data-xfs-backup
   accessModes:
     - ReadWriteOnce
   resources:
