@@ -14,6 +14,7 @@ spec:
         storage: local-lvm
         reclaimPolicy: Delete
         fstype: xfs
+        backup: "true"
         annotations:
           storageclass.kubernetes.io/is-default-class: "true"
     controller:
