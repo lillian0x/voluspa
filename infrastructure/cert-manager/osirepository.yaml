@@ -5,4 +5,6 @@ metadata:
   namespace: cert-manager
 spec:
   interval: 30m
-  url: oci://quay.io/jetstack/charts/cert-manager:v1.21.2
+  url: oci://quay.io/jetstack/charts/cert-manager
+  ref:
+    tag: v1.21.2
