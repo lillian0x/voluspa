@@ -1,0 +1,21 @@
+apiVersion: barmancloud.cnpg.io/v1
+kind: ObjectStore
+metadata:
+  name: rustfs-store
+  namespace: miniflux
+spec:
+  configuration:
+    destinationPath: "s3://cnpg-backups/miniflux-db"
+    endpointURL: "http://102.168.10.104:9000"
+    s3Credentials:
+      accessKeyId:
+        name: rustfs-creds
+        key: ACCESS_KEY_ID
+      secretAccessKey:
+        name: rustfs-creds
+        key: ACCESS_SECRET_KEY
+    wal:
+      compression: gzip
+    data:
+      compression: gzip
+  retentionPolicy: "30d"
