@@ -6,7 +6,7 @@ metadata:
 spec:
   configuration:
     destinationPath: "s3://cnpg-backups/miniflux-db"
-    endpointURL: "http://102.168.10.104:9000"
+    endpointURL: "http://192.168.10.104:9000"
     s3Credentials:
       accessKeyId:
         name: rustfs-creds
