@@ -8,3 +8,5 @@ resources:
   - sealed-secret.yaml
   - cluster.yaml
   - ingress.yaml
+  - objectstore.yaml
+  - scheduledbackup.yaml
