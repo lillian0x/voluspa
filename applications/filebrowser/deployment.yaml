@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: filebrowser
-          image: gtstef/filebrowser:latest
+          image: gtstef/filebrowser:1.5.6-stable
           resources:
             requests:
               cpu: "100m"
