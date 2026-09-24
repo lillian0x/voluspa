@@ -40,19 +40,6 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: hister
-  namespace: flux-system
-spec:
-  interval: 5m
-  path: ./applications/hister
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
   name: memos
   namespace: flux-system
 spec:
