@@ -5,6 +5,9 @@
   "kubernetes": {
     "managerFilePatterns": ["/\\.yaml$/"]
   },
+  "flux": {
+    "managerFilePatterns": ["/\\.ya?ml$/"]
+  },
   "packageRules": [
     {
       "matchDatasources": ["docker"],
