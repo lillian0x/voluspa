@@ -24,4 +24,4 @@ spec:
       volumes:
         - name: dashy-data
           persistentVolumeClaim:
-            claimName: dashy-data
+            claimName: dashy-data-longhorn
