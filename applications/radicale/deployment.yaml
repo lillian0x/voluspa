@@ -32,7 +32,7 @@ spec:
       volumes:
       - name: data
         persistentVolumeClaim:
-          claimName: radicale-pvc
+          claimName: radicale-data
       - name: auth
         secret:
           secretName: radicale-auth
