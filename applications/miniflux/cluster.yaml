@@ -13,6 +13,7 @@ spec:
     isWALArchiver: true
     parameters:
       barmanObjectName: rustfs-store
+      serverName: miniflux-db-longhorn
   resources:
     requests:
       cpu: "250m"
