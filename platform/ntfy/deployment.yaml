@@ -36,4 +36,4 @@ spec:
             name: ntfy-config
         - name: ntfy-data
           persistentVolumeClaim:
-            claimName: ntfy-data
+            claimName: ntfy-cache
