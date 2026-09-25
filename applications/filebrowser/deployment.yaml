@@ -47,7 +47,7 @@ spec:
             path: /mnt/hdd
         - name: database
           persistentVolumeClaim:
-            claimName: filebrowser-data
+            claimName: filebrowser-db
         - name: config
           configMap:
             name: filebrowser-config
