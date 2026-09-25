@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: calibre-web
+  name: calibre
   namespace: calibre
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: calibre-web
+      app: calibre
   template:
     metadata:
       labels:
-        app: calibre-web
+        app: calibre
     spec:
       containers:
-      - name: calibre-web
+      - name: calibre
         image: lscr.io/linuxserver/calibre-web:0.6.27-ls402
         env:
         - name: PUID
