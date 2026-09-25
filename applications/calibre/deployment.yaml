@@ -34,7 +34,7 @@ spec:
       volumes:
       - name: config
         persistentVolumeClaim:
-          claimName: calibre-web-config-data
+          claimName: calibre-config
       - name: books
         nfs:
           server: 192.168.10.104
