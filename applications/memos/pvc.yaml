@@ -11,3 +11,16 @@ spec:
       storage: 2Gi
   storageClassName: proxmox-data-xfs
   volumeAttributesClassName: proxmox-data-xfs-backup
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: memos-pvc
+  namespace: memos
+spec:
+  storageClassName: longhorn
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
