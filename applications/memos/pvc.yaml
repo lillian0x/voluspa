@@ -15,7 +15,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: memos-pvc
+  name: memos-data
   namespace: memos
 spec:
   storageClassName: longhorn
