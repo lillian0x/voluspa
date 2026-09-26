@@ -1,6 +1,7 @@
 checks:
   doNotAutoAddDefaults: true
   include:
+    - "dangling-service"
     - "deprecated-service-account-field"
     - "docker-sock"
     - "drop-net-raw-capability"
