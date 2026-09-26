@@ -15,15 +15,27 @@ spec:
       labels:
         app: pocket-id
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
       containers:
         - name: pocket-id
-          image: ghcr.io/pocket-id/pocket-id:v2.16.0
+          image: ghcr.io/pocket-id/pocket-id:v2.16.0-distroless
+          securityContext:
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
           resources:
             requests:
               memory: 64Mi
               cpu: 1m
             limits:
               memory: 128Mi
+              cpu: 100m
           ports:
             - containerPort: 1411
               name: http
