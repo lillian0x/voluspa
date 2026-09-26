@@ -23,6 +23,8 @@ spec:
       memory: "512Mi"
   bootstrap:
     recovery:
+      database: miniflux
+      owner: miniflux
       source: miniflux-db-source
   externalClusters:
     - name: miniflux-db-source
