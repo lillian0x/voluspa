@@ -17,28 +17,39 @@ spec:
       - name: radicale
         image: tomsquest/docker-radicale:3.8.0.0
         resources:
-            requests:
-              memory: 64Mi
-              cpu: 1m
-            limits:
-              memory: 128Mi
+          requests:
+            memory: 64Mi
+            cpu: 1m
+          limits:
+            memory: 128Mi
+            cpu: 500m
+        securityContext:
+          readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+              - ALL
+            add:
+              - CHOWN
+              - SETUID
+              - SETGID
+              - KILL
         ports:
         - containerPort: 5232
-        env:
-          - name: RADICALE_CONFIG_SERVER_HOSTS
-            value: "0.0.0.0:5232"
-          - name: RADICALE_CONFIG_AUTH_TYPE
-            value: "htpasswd"
         volumeMounts:
         - name: data
           mountPath: /data
-        - name: auth
-          mountPath: /etc/radicale/users
-          subPath: users
+        - name: config
+          mountPath: /config
+          readOnly: true
       volumes:
       - name: data
         persistentVolumeClaim:
           claimName: radicale-data
-      - name: auth
-        secret:
-          secretName: radicale-auth
+      - name: config
+        projected:
+          sources:
+            - configMap:
+                name: radicale-config
+            - secret:
+                name: radicale-auth
