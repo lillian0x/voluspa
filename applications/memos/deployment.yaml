@@ -16,6 +16,12 @@ spec:
       containers:
         - name: memos
           image: docker.io/neosmemo/memos:0.31
+          resources:
+            requests:
+              memory: 32Mi
+              cpu: 1m
+            limits:
+              memory: 128Mi
           ports:
             - containerPort: 5230
               protocol: TCP

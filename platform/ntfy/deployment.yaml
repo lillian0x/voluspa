@@ -16,6 +16,12 @@ spec:
       containers:
         - name: ntfy
           image: binwiederhier/ntfy:v2.28.0
+          resources:
+            requests:
+              memory: 64Mi
+              cpu: 1m
+            limits:
+              memory: 128Mi
           args:
             - serve
           ports:
