@@ -53,19 +53,6 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: metube
-  namespace: flux-system
-spec:
-  interval: 5m
-  path: ./applications/metube
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
   name: miniflux
   namespace: flux-system
 spec:
