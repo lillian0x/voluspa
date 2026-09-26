@@ -36,6 +36,9 @@ spec:
               - KILL
         ports:
         - containerPort: 5232
+        env:
+          - name: TAKE_FILE_OWNERSHIP
+            value: "false"
         volumeMounts:
         - name: data
           mountPath: /data
