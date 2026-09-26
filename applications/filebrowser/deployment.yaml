@@ -17,6 +17,12 @@ spec:
       labels:
         app: filebrowser
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
       containers:
         - name: filebrowser
           image: gtstef/filebrowser:1.5.6-stable
@@ -27,6 +33,8 @@ spec:
             limits:
               cpu: "500m"
               memory: "512Mi"
+          securityContext:
+            readOnlyRootFilesystem: true
           ports:
             - containerPort: 80
           envFrom:
