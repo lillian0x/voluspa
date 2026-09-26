@@ -13,6 +13,11 @@ spec:
       labels:
         app: memos
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
       containers:
         - name: memos
           image: docker.io/neosmemo/memos:0.31
@@ -22,21 +27,21 @@ spec:
               cpu: 1m
             limits:
               memory: 128Mi
+              cpu: 100m
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
           ports:
             - containerPort: 5230
               protocol: TCP
           env:
             - name: MEMOS_PORT
               value: "5230"
-            - name: PUID
-              value: "1000"
-            - name: PGID
-              value: "1000"
           volumeMounts:
             - name: data
               mountPath: /var/opt/memos
-      securityContext:
-        fsGroup: 1000
       volumes:
         - name: data
           persistentVolumeClaim:
