@@ -13,6 +13,12 @@ spec:
       labels:
         app: dashy
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
       containers:
         - name: dashy
           image: lissy93/dashy:4.7.7
