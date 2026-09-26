@@ -13,6 +13,10 @@ spec:
       labels:
         app: radicale
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 2999
+        runAsGroup: 2999
       containers:
       - name: radicale
         image: tomsquest/docker-radicale:3.8.0.0
@@ -30,7 +34,6 @@ spec:
             drop:
               - ALL
             add:
-              - CHOWN
               - SETUID
               - SETGID
               - KILL
