@@ -48,6 +48,8 @@ spec:
               mountPath: /srv
             - name: database
               mountPath: /database
+            - name: tmp
+              mountPath: /tmp
       volumes:
         - name: data
           nfs:
@@ -59,3 +61,5 @@ spec:
         - name: config
           configMap:
             name: filebrowser-config
+        - name: tmp
+          emptyDir: {}
