@@ -46,6 +46,8 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /home/suwayomi/.local/share/Tachidesk
+            - name: tmp
+              mountPath: /tmp
           readinessProbe:
             httpGet:
               path: /
@@ -62,3 +64,5 @@ spec:
         - name: data
           persistentVolumeClaim:
             claimName: suwayomi-data
+        - name: tmp
+          emptyDir: {}
