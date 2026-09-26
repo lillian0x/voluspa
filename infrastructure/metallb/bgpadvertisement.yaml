@@ -1,8 +1,8 @@
 apiVersion: metallb.io/v1beta1
-kind: L2Advertisement
+kind: BGPAdvertisement
 metadata:
-  name: l2-adv
+  name: bgp-advertisement
   namespace: metallb-system
 spec:
   ipAddressPools:
-  - default-pool
+    - default-pool
