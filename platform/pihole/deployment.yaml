@@ -37,6 +37,9 @@ spec:
               value: "root"
             - name: FTLCONF_LOCAL_IPV4
               value: "192.168.0.200"
+          envFrom:
+            - secretRef:
+              name: pihole-secret
           ports:
             - {containerPort: 53, protocol: TCP}
             - {containerPort: 53, protocol: UDP}
