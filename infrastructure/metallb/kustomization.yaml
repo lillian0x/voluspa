@@ -8,3 +8,4 @@ resources:
   - ipaddresspool.yaml
   - bgppeer.yaml
   - bgpadvertisement.yaml
+  - l2advertisement.yaml
