@@ -39,7 +39,7 @@ spec:
               value: "192.168.0.200"
           envFrom:
             - secretRef:
-              name: pihole-secret
+                name: pihole-secret
           ports:
             - {containerPort: 53, protocol: TCP}
             - {containerPort: 53, protocol: UDP}
