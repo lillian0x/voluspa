@@ -5,7 +5,6 @@ metadata:
   namespace: cloudflare-tunnel-system
 spec:
   interval: 30m
-
   chart:
     spec:
       chart: cloudflare-tunnel-ingress-controller
@@ -13,7 +12,6 @@ spec:
         kind: HelmRepository
         name: cloudflare-tunnel
       interval: 1h
-
   values:
     cloudflare:
       secretRef:
@@ -21,14 +19,11 @@ spec:
         accountIDKey: account_id
         tunnelNameKey: tunnel_name
         apiTokenKey: api_token
-
     ingressClass:
       name: cloudflare-tunnel
       isDefaultClass: false
-
     cloudflared:
       replicaCount: 2
       pdb:
         enabled: true
         minAvailable: 1
-
