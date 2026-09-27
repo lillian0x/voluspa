@@ -15,6 +15,14 @@ spec:
       labels:
         app: pihole
     spec:
+      automountServiceAccountToken: false
+      initContainers:
+      - name: fix-permissions
+        image: busybox:1.37
+        command: ["sh", "-c", "chown -R 0:0 /etc/pihole /etc/dnsmasq.d"]
+        volumeMounts:
+          - {name: etc-pihole, mountPath: /etc/pihole}
+          - {name: etc-dnsmasq, mountPath: /etc/dnsmasq.d}
       containers:
         - name: pihole
           image: pihole/pihole:2026.09.0
@@ -25,19 +33,22 @@ spec:
             limits:
               memory: 256Mi
           securityContext:
-            allowPrivilegeExcalation: false
+            runAsUser: 0
+            allowPrivilegeEscalation: false
             capabilities:
-              drop:
-                - "ALL"
+              drop: ["ALL"]
               add:
-                - "NET_ADMIN"
-                - "NET_RAW"
-                - "NET_BIND_SERVICE"
+                - CHOWN
+                - NET_BIND_SERVICE
+            seccompProfile:
+              type: RuntimeDefault
           env:
             - name: TZ
               value: "Asia/Tokyo"
+            - name: DNSMASQ_USER
+              value: "root"
             - name: FTLCONF_LOCAL_IPV4
-              value: "192.168.1.100"
+              value: "192.168.0.240"
           ports:
             - {containerPort: 53, protocol: TCP}
             - {containerPort: 53, protocol: UDP}
