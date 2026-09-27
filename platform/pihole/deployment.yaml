@@ -16,13 +16,6 @@ spec:
         app: pihole
     spec:
       automountServiceAccountToken: false
-      initContainers:
-      - name: fix-permissions
-        image: busybox:1.37
-        command: ["sh", "-c", "chown -R 0:0 /etc/pihole /etc/dnsmasq.d"]
-        volumeMounts:
-          - {name: etc-pihole, mountPath: /etc/pihole}
-          - {name: etc-dnsmasq, mountPath: /etc/dnsmasq.d}
       containers:
         - name: pihole
           image: pihole/pihole:2026.09.0
@@ -48,7 +41,7 @@ spec:
             - name: DNSMASQ_USER
               value: "root"
             - name: FTLCONF_LOCAL_IPV4
-              value: "192.168.0.240"
+              value: "192.168.0.200"
           ports:
             - {containerPort: 53, protocol: TCP}
             - {containerPort: 53, protocol: UDP}
