@@ -18,7 +18,7 @@ spec:
       automountServiceAccountToken: false
       initContainers:
       - name: fix-permissions
-        image: busybox:1.37
+        image: busybox:1.38
         command: ["sh", "-c", "chown -R 0:0 /etc/pihole /etc/dnsmasq.d"]
         volumeMounts:
           - {name: etc-pihole, mountPath: /etc/pihole}
