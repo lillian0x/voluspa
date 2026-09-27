@@ -9,11 +9,11 @@ spec:
     size: 5Gi
     storageClass: longhorn
   plugins:
-  - name: barman-cloud.cloudnative-pg.io
-    isWALArchiver: true
-    parameters:
-      barmanObjectName: rustfs-store
-      serverName: miniflux-db
+    - name: barman-cloud.cloudnative-pg.io
+      isWALArchiver: true
+      parameters:
+        barmanObjectName: rustfs-store
+        serverName: miniflux-db
   resources:
     requests:
       cpu: 2m

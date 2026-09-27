@@ -7,5 +7,5 @@ spec:
   selector:
     app: radicale
   ports:
-  - port: 80
-    targetPort: 5232
+    - port: 80
+      targetPort: 5232

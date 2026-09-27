@@ -14,26 +14,26 @@ spec:
         app.kubernetes.io/name: alertmanager-to-github
     spec:
       containers:
-      - name: alertmanager-to-github
-        image: ghcr.io/pfnet-research/alertmanager-to-github:v0.3.1
-        env:
-        - name: ATG_LISTEN
-          value: ':8080'
-        - name: ATG_GITHUB_TOKEN
-          valueFrom:
-            secretKeyRef:
-              name: alertmanager-to-github
-              key: ATG_GITHUB_TOKEN
-        livenessProbe:
-          httpGet:
-            path: /metrics
-            port: 8080
-        securityContext:
-          allowPrivilegeEscalation: false
-          runAsNonRoot: true
-          readOnlyRootFilesystem: true
-          capabilities:
-            drop:
-            - ALL
-          seccompProfile:
-            type: RuntimeDefault
+        - name: alertmanager-to-github
+          image: ghcr.io/pfnet-research/alertmanager-to-github:v0.3.1
+          env:
+            - name: ATG_LISTEN
+              value: ':8080'
+            - name: ATG_GITHUB_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: alertmanager-to-github
+                  key: ATG_GITHUB_TOKEN
+          livenessProbe:
+            httpGet:
+              path: /metrics
+              port: 8080
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+            seccompProfile:
+              type: RuntimeDefault

@@ -18,44 +18,44 @@ spec:
         runAsUser: 2999
         runAsGroup: 2999
       containers:
-      - name: radicale
-        image: tomsquest/docker-radicale:3.8.0.0
-        resources:
-          requests:
-            memory: 64Mi
-            cpu: 1m
-          limits:
-            memory: 128Mi
-            cpu: 500m
-        securityContext:
-          readOnlyRootFilesystem: true
-          allowPrivilegeEscalation: false
-          capabilities:
-            drop:
-              - ALL
-            add:
-              - SETUID
-              - SETGID
-              - KILL
-        ports:
-        - containerPort: 5232
-        env:
-          - name: TAKE_FILE_OWNERSHIP
-            value: "false"
-        volumeMounts:
-        - name: data
-          mountPath: /data
-        - name: config
-          mountPath: /config
-          readOnly: true
+        - name: radicale
+          image: tomsquest/docker-radicale:3.8.0.0
+          resources:
+            requests:
+              memory: 64Mi
+              cpu: 1m
+            limits:
+              memory: 128Mi
+              cpu: 500m
+          securityContext:
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+              add:
+                - SETUID
+                - SETGID
+                - KILL
+          ports:
+            - containerPort: 5232
+          env:
+            - name: TAKE_FILE_OWNERSHIP
+              value: "false"
+          volumeMounts:
+            - name: data
+              mountPath: /data
+            - name: config
+              mountPath: /config
+              readOnly: true
       volumes:
-      - name: data
-        persistentVolumeClaim:
-          claimName: radicale-data
-      - name: config
-        projected:
-          sources:
-            - configMap:
-                name: radicale-config
-            - secret:
-                name: radicale-auth
+        - name: data
+          persistentVolumeClaim:
+            claimName: radicale-data
+        - name: config
+          projected:
+            sources:
+              - configMap:
+                  name: radicale-config
+              - secret:
+                  name: radicale-auth
