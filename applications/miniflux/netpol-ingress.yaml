@@ -18,4 +18,4 @@ spec:
             matchLabels:
               app: controlled-cloudflared-connector
       ports:
-        - {protocol: TCP, port: 5230}
+        - {protocol: TCP, port: 8080}
