@@ -18,4 +18,4 @@ spec:
             matchLabels:
               app: miniflux
       ports:
-        - {protocol: TCP, port: 5230}
+        - {protocol: TCP, port: 8080}
