@@ -8,3 +8,6 @@ resources:
   - sealed-secret.yaml
   - ingress.yaml
   - config.yaml
+  - netpol-default.yaml
+  - netpol-ingress.yaml
+  - netpol-tunnel-egress.yaml
