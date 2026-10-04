@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: connector-to-radicale
+  namespace: cloudflare-tunnel-system
+spec:
+  podSelector:
+    matchLabels:
+      app: controlled-cloudflared-connector
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: radicale
+          podSelector:
+            matchLabels:
+              app: radicale
+      ports:
+        - {protocol: TCP, port: 5232}
