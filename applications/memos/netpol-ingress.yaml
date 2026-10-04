@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-from-cloudflared
+  namespace: memos
+spec:
+  podSelector:
+    matchLabels:
+      app: memos
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: cloudflare-tunnel-system
+          podSelector:
+            matchLabels:
+              app: controlled-cloudflared-connector
+      ports:
+        - {protocol: TCP, port: 5230}
