@@ -5,4 +5,5 @@ resources:
   - helmrepository.yaml
   - helmrelease.yaml
   - sealed-secret.yaml
-  - networkpolicy.yaml
+  - nwpol-default.yaml
+  - nwpol-egress.yaml
