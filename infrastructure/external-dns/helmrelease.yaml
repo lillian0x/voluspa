@@ -19,12 +19,18 @@ spec:
     remediation:
       retries: 3
   values:
+    resources:
+      requests: {cpu: 10m, memory: 32Mi}
+      limits: {memory: 128Mi}
     provider:
       name: webhook
       webhook:
         image:
           repository: ghcr.io/muhlba91/external-dns-provider-adguard
           tag: v11.2.0
+        resources:
+          requests: {cpu: 10m, memory: 32Mi}
+          limits: {memory: 128Mi}
         env:
           - name: ADGUARD_URL
             valueFrom:
@@ -38,8 +44,12 @@ spec:
     sources:
       - service
       - ingress
-    policy: upsert-only # 動作確認後に sync へ
+    logLevel: info
+    logFormat: json
+    interval: 5m
+    triggerLoopOnEvent: true
+    policy: sync
     registry: txt
     txtOwnerId: k3s
     domainFilters:
-      - home.example.com
+      - x1d.uk
