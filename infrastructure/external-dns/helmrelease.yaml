@@ -43,7 +43,6 @@ spec:
               secretKeyRef: {name: adguard-configuration, key: password}
     sources:
       - service
-      - ingress
     logLevel: info
     logFormat: json
     interval: 5m
