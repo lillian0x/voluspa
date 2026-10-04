@@ -10,3 +10,8 @@ resources:
   - ingress.yaml
   - objectstore.yaml
   - scheduledbackup.yaml
+  - netpol-default.yaml
+  - netpol-ingress.yaml
+  - netpol-tunnel-egress.yaml
+  - netpol-egress.yaml
+  - netpol-db.yaml
