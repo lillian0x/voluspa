@@ -13,3 +13,4 @@ data:
   OAUTH2_USER_CREATION: "1"
   DISABLE_LOCAL_AUTH: "1" # optional, if you want to disable local authentication
   POLLING_PARSING_ERROR_LIMIT: "0"
+  WORKER_POOL_SIZE: "5"
