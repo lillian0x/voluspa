@@ -11,3 +11,4 @@ resources:
   - netpol-default.yaml
   - netpol-ingress.yaml
   - netpol-tunnel-egress.yaml
+  - netpol-oidc.yaml
