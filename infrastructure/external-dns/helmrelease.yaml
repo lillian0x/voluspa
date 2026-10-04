@@ -35,8 +35,6 @@ spec:
           - name: ADGUARD_PASSWORD
             valueFrom:
               secretKeyRef: {name: adguard-configuration, key: password}
-          - name: SERVER_HOST
-            value: "0.0.0.0"
     sources:
       - service
       - ingress
