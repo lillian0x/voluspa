@@ -8,3 +8,6 @@ resources:
   - pvc.yaml
   - config.yaml
   - sealed-secret.yaml
+  - netpol-default.yaml
+  - netpol-ingress.yaml
+  - netpol-tunnel-egress.yaml
