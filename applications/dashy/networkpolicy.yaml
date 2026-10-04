@@ -45,7 +45,7 @@ spec:
     - from:
         - namespaceSelector:
             matchLabels:
-              kubernetes.io/metadata.name: cloudflare-tunnel-ingress
+              kubernetes.io/metadata.name: cloudflare-tunnel-system
           podSelector:
             matchLabels:
               app: controlled-cloudflared-connector
