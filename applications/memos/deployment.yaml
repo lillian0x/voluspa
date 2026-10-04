@@ -13,7 +13,10 @@ spec:
       labels:
         app: memos
     spec:
+      automountServiceAccountToken: false
       securityContext:
+        seccompProfile:
+          type: RuntimeDefault
         runAsNonRoot: true
         runAsUser: 10001
         runAsGroup: 10001
@@ -27,7 +30,6 @@ spec:
               cpu: 1m
             limits:
               memory: 128Mi
-              cpu: 100m
           securityContext:
             readOnlyRootFilesystem: true
             allowPrivilegeEscalation: false
