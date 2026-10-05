@@ -4,7 +4,7 @@ metadata:
   name: suwayomi
   namespace: suwayomi
   annotations:
-    external-dns.kubernetes.io/hostname: app.example.com
+    external-dns.kubernetes.io/hostname: suwayomi.x1d.uk
     external-dns.kubernetes.io/ttl: "300"
     metallb.universe.tf/loadBalancerIPs: 192.168.0.160
 spec:
