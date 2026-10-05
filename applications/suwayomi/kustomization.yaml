@@ -5,3 +5,7 @@ resources:
   - deployment.yaml
   - pvc.yaml
   - svc.yaml
+  - netpol-default.yaml
+  - netpol-ingress.yaml
+  - netpol-tunnel-egress.yaml
+  - netpol-egress.yaml
