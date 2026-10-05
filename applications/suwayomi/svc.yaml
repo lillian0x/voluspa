@@ -4,8 +4,8 @@ metadata:
   name: suwayomi
   namespace: suwayomi
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: app.example.com
-    external-dns.alpha.kubernetes.io/ttl: "300"
+    external-dns.kubernetes.io/hostname: app.example.com
+    external-dns.kubernetes.io/ttl: "300"
 spec:
   type: LoadBalancer
   selector:
