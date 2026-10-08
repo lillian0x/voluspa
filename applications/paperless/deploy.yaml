@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: paperless
   namespace: paperless
+  annotations:
+    ignore-check.kube-linter.io/no-read-only-root-fs: "s6-overlay が /run に書き込む。emptyDirはroot所有でuid1000の非root実行と両立しない"
 spec:
   replicas: 1
   strategy: {type: Recreate}
@@ -73,7 +75,7 @@ spec:
               value: "redis://:$(REDIS_PASSWORD)@127.0.0.1:6379"
           securityContext:
             allowPrivilegeEscalation: false
-            readOnlyRootFilesystem: true
+            readOnlyRootFilesystem: false
             capabilities: {drop: [ALL]}
           startupProbe:
             tcpSocket: {port: http}
@@ -93,7 +95,6 @@ spec:
             - {name: media, mountPath: /usr/src/paperless/media}
             - {name: consume, mountPath: /usr/src/paperless/consume}
             - {name: tmp, mountPath: /tmp}
-            - {name: run, mountPath: /run}
       volumes:
         - name: data
           persistentVolumeClaim: {claimName: paperless-data}
@@ -101,5 +102,4 @@ spec:
           persistentVolumeClaim: {claimName: paperless-media}
         - {name: consume, emptyDir: {}}
         - {name: tmp, emptyDir: {}}
-        - {name: run, emptyDir: {}}
         - {name: redis-tmp, emptyDir: {medium: Memory, sizeLimit: 64Mi}}

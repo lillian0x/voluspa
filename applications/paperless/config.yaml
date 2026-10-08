@@ -17,7 +17,6 @@ data:
   PAPERLESS_MEDIA_ROOT: /usr/src/paperless/media
   PAPERLESS_CONSUMPTION_DIR: /usr/src/paperless/consume
   PAPERLESS_TIME_ZONE: Asia/Tokyo
-  S6_READ_ONLY_ROOT: "1" # s6-overlay を読み取り専用rootfsで動かす (/run を使用)
   PYTHONDONTWRITEBYTECODE: "1" # .pyc をイメージ内に書かない
   PAPERLESS_OCR_LANGUAGE: jpn+eng
   PAPERLESS_OCR_LANGUAGES: jpn
