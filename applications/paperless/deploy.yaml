@@ -1,0 +1,105 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paperless
+  namespace: paperless
+spec:
+  replicas: 1
+  strategy: {type: Recreate}
+  selector:
+    matchLabels: {app: paperless}
+  template:
+    metadata:
+      labels: {app: paperless}
+    spec:
+      serviceAccountName: paperless
+      automountServiceAccountToken: false
+      enableServiceLinks: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile: {type: RuntimeDefault}
+      initContainers:
+        - name: redis
+          image: redis:7-alpine
+          restartPolicy: Always
+          command:
+            - "sh"
+            - "-c"
+          args:
+            - exec redis-server --bind 127.0.0.1 --requirepass "$REDIS_PASSWORD" --save "" --appendonly no --dir /tmp
+          env:
+            - name: REDIS_PASSWORD
+              valueFrom: {secretKeyRef: {name: paperless-secret, key: REDIS_PASSWORD}}
+          securityContext:
+            runAsUser: 999
+            runAsGroup: 999
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: {drop: [ALL]}
+          startupProbe:
+            exec:
+              command:
+                - "sh"
+                - "-c"
+                - "REDISCLI_AUTH=\"$REDIS_PASSWORD\" redis-cli -h 127.0.0.1 ping | grep -q PONG"
+            periodSeconds: 2
+            failureThreshold: 30
+          resources:
+            requests: {cpu: 50m, memory: 64Mi}
+            limits: {memory: 256Mi}
+          volumeMounts:
+            - {name: redis-tmp, mountPath: /tmp}
+      containers:
+        - name: paperless
+          image: ghcr.io/paperless-ngx/paperless-ngx:3.3.0
+          ports:
+            - {name: http, containerPort: 8000}
+          envFrom:
+            - configMapRef: {name: paperless-config}
+          env:
+            - name: PAPERLESS_SECRET_KEY
+              valueFrom: {secretKeyRef: {name: paperless-secret, key: PAPERLESS_SECRET_KEY}}
+            - name: PAPERLESS_ADMIN_USER
+              valueFrom: {secretKeyRef: {name: paperless-secret, key: PAPERLESS_ADMIN_USER}}
+            - name: PAPERLESS_ADMIN_PASSWORD
+              valueFrom: {secretKeyRef: {name: paperless-secret, key: PAPERLESS_ADMIN_PASSWORD}}
+            - name: REDIS_PASSWORD
+              valueFrom: {secretKeyRef: {name: paperless-secret, key: REDIS_PASSWORD}}
+            - name: PAPERLESS_REDIS
+              value: "redis://:$(REDIS_PASSWORD)@127.0.0.1:6379"
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: {drop: [ALL]}
+          startupProbe:
+            tcpSocket: {port: http}
+            failureThreshold: 60
+            periodSeconds: 5
+          readinessProbe:
+            tcpSocket: {port: http}
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket: {port: http}
+            periodSeconds: 30
+          resources:
+            requests: {cpu: 200m, memory: 768Mi}
+            limits: {memory: 2Gi}
+          volumeMounts:
+            - {name: data, mountPath: /usr/src/paperless/data}
+            - {name: media, mountPath: /usr/src/paperless/media}
+            - {name: consume, mountPath: /usr/src/paperless/consume}
+            - {name: tmp, mountPath: /tmp}
+            - {name: run, mountPath: /run}
+      volumes:
+        - name: data
+          persistentVolumeClaim: {claimName: paperless-data}
+        - name: media
+          persistentVolumeClaim: {claimName: paperless-media}
+        - {name: consume, emptyDir: {}}
+        - {name: tmp, emptyDir: {}}
+        - {name: run, emptyDir: {}}
+        - {name: redis-tmp, emptyDir: {medium: Memory, sizeLimit: 64Mi}}
