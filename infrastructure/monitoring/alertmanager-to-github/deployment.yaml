@@ -13,9 +13,28 @@ spec:
       labels:
         app.kubernetes.io/name: alertmanager-to-github
     spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: alertmanager-to-github
           image: ghcr.io/pfnet-research/alertmanager-to-github:v0.3.1
+          resources:
+            requests:
+              cpu: 1m
+              memory: 24Mi
+            limits:
+              memory: 64Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
           env:
             - name: ATG_LISTEN
               value: ':8080'
@@ -28,12 +47,3 @@ spec:
             httpGet:
               path: /metrics
               port: 8080
-          securityContext:
-            allowPrivilegeEscalation: false
-            runAsNonRoot: true
-            readOnlyRootFilesystem: true
-            capabilities:
-              drop:
-                - ALL
-            seccompProfile:
-              type: RuntimeDefault
