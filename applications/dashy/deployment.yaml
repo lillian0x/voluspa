@@ -22,7 +22,7 @@ spec:
         fsGroupChangePolicy: OnRootMismatch
       containers:
         - name: dashy
-          image: lissy93/dashy:4.7.7
+          image: lissy93/dashy:4.8.2
           resources:
             requests:
               memory: 32Mi
