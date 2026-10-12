@@ -7,3 +7,19 @@ misconfigurations:
     statement: パスワードファイルの場所を示す設定のみで、機密情報は含まない
   - id: KSV-0125
     statement: 信頼レジストリの定義が空のため、全イメージが該当する
+  - id: KSV-0020
+    paths:
+      - applications/dashy/deployment.yaml
+    statement: イメージの node(1000) 所有のファイルに合わせるため
+  - id: KSV-0021
+    paths:
+      - applications/dashy/deployment.yaml
+    statement: 同上
+  - id: KSV-0020
+    paths:
+      - applications/filebrowser/deployment.yaml
+    statement: PVC内データの所有者(1000)に合わせるため
+  - id: KSV-0021
+    paths:
+      - applications/filebrowser/deployment.yaml
+    statement: 同上
