@@ -21,6 +21,8 @@ spec:
         runAsUser: 1000
         runAsGroup: 1000
         fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: pocket-id
           image: ghcr.io/pocket-id/pocket-id:v2.16.0-distroless

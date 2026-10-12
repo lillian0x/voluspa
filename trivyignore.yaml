@@ -23,3 +23,15 @@ misconfigurations:
     paths:
       - applications/filebrowser/deployment.yaml
     statement: 同上
+  - id: KSV-0028
+    paths:
+      - applications/filebrowser/deployment.yaml
+    statement: NFS上のファイルを公開する用途のため
+  - id: KSV-0020
+    paths:
+      - platform/pocket-id/deployment.yaml
+    statement: PVC内データの所有者(1000)に合わせるため
+  - id: KSV-0021
+    paths:
+      - platform/pocket-id/deployment.yaml
+    statement: 同上
