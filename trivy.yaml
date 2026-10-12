@@ -1,0 +1,4 @@
+scan:
+  skip-files:
+    - clusters/midgard/flux-system/gotk-components.yaml
+exit-code: 1

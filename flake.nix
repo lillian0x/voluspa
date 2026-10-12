@@ -52,9 +52,9 @@
             buildInputs =
               with pkgs;
               [
-                conftest
                 kube-linter
                 kustomize
+                trivy
               ]
               ++ config.pre-commit.settings.enabledPackages;
           };
