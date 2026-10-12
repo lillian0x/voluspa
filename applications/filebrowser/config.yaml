@@ -6,7 +6,7 @@ metadata:
 data:
   config.yaml: |
     server:
-      port: 80
+      port: 8080
       database: /database/filebrowser.db
       cacheDir: /tmp
       sources:

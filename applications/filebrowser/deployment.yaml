@@ -24,6 +24,8 @@ spec:
         runAsGroup: 1000
         fsGroup: 1000
         fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: filebrowser
           image: gtstef/filebrowser:1.5.6-stable
@@ -35,8 +37,12 @@ spec:
               memory: "512Mi"
           securityContext:
             readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           envFrom:
             - secretRef:
                 name: filebrowser-secret
