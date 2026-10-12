@@ -95,6 +95,7 @@ spec:
             - {name: media, mountPath: /usr/src/paperless/media}
             - {name: consume, mountPath: /usr/src/paperless/consume}
             - {name: tmp, mountPath: /tmp}
+            - {name: run, mountPath: /run}
       volumes:
         - name: data
           persistentVolumeClaim: {claimName: paperless-data}
@@ -102,4 +103,5 @@ spec:
           persistentVolumeClaim: {claimName: paperless-media}
         - {name: consume, emptyDir: {}}
         - {name: tmp, emptyDir: {}}
+        - {name: run, emptyDir: {medium: Memory, sizeLimit: 16Mi}}
         - {name: redis-tmp, emptyDir: {medium: Memory, sizeLimit: 64Mi}}
