@@ -1,0 +1,9 @@
+misconfigurations:
+  - id: KSV-0011
+    statement: CPU limitはスロットリングを避けるため意図的に未設定
+  - id: KSV-01010
+    paths:
+      - applications/radicale/config.yaml
+    statement: パスワードファイルの場所を示す設定のみで、機密情報は含まない
+  - id: KSV-0125
+    statement: 信頼レジストリの定義が空のため、全イメージが該当する

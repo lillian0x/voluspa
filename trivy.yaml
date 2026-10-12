@@ -1,3 +1,4 @@
+ignorefile: trivyignore.yaml
 scan:
   skip-files:
     - clusters/midgard/flux-system/gotk-components.yaml
