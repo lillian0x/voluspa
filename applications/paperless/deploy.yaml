@@ -24,7 +24,7 @@ spec:
         seccompProfile: {type: RuntimeDefault}
       initContainers:
         - name: redis
-          image: redis:8-alpine
+          image: redis:8.10.2-alpine
           restartPolicy: Always
           command:
             - "sh"
