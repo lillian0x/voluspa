@@ -6,8 +6,9 @@ metadata:
 data:
   config.yaml: |
     server:
-      port: 8080
-      database: /database/filebrowser.db
+      database:
+        path: "/database/filebrowser.sqlite"
+        migrateFrom: "/database/filebrowser.db"
       cacheDir: /tmp
       sources:
         - path: /srv
@@ -15,6 +16,8 @@ data:
           config:
             defaultEnabled: true
             defaultUserScope: "/share"
+    http:
+      port: 8080
     auth:
       methods:
         oidc:
