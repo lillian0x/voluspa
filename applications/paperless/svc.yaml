@@ -6,4 +6,5 @@ metadata:
 spec:
   selector: {app: paperless}
   ports:
-    - {name: http, port: 8000, targetPort: http}
+    - port: 80
+      targetPort: 8000
