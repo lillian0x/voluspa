@@ -18,6 +18,7 @@ data:
             defaultUserScope: "/share"
     http:
       port: 8080
+      trustProxyHeaders: true
     auth:
       methods:
         oidc:
