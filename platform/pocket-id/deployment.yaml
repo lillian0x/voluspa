@@ -25,7 +25,7 @@ spec:
           type: RuntimeDefault
       containers:
         - name: pocket-id
-          image: ghcr.io/pocket-id/pocket-id:v2.16.0-distroless
+          image: ghcr.io/pocket-id/pocket-id:v2.18.0-distroless
           securityContext:
             readOnlyRootFilesystem: true
             allowPrivilegeEscalation: false
