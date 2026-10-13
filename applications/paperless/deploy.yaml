@@ -3,8 +3,6 @@ kind: Deployment
 metadata:
   name: paperless
   namespace: paperless
-  annotations:
-  # ignore-check.kube-linter.io/no-read-only-root-fs: "s6-overlay が /run に書き込む。emptyDirはroot所有でuid1000の非root実行と両立しない"
 spec:
   replicas: 1
   strategy: {type: Recreate}
