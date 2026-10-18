@@ -27,7 +27,7 @@
           check-yaml.enable = true;
           yamlfmt = {
             enable = true;
-            entry = "${pkgs.yamlfmt}/bin/yamlfmt";
+            settings.lint-only = false;
           };
           kube-linter = {
             enable = true;
