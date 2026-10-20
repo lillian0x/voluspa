@@ -22,7 +22,7 @@ spec:
         runAsGroup: 65534
       containers:
         - name: miniflux
-          image: miniflux/miniflux:2.3.3
+          image: miniflux/miniflux:2.3.4
           resources:
             requests:
               memory: 64Mi
