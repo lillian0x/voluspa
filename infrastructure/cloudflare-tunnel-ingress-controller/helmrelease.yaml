@@ -23,6 +23,9 @@ spec:
       name: cloudflare-tunnel
       isDefaultClass: false
     cloudflared:
+      image:
+        repository: cloudflare/cloudflared
+        tag: 2026.10.3
       replicaCount: 2
       pdb:
         enabled: true
