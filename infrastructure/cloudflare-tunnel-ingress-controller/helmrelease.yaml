@@ -63,3 +63,13 @@ spec:
           memory: 256Mi
     serviceMonitor:
       create: true
+      labels:
+        release: kube-prometheus-stack
+      interval: 30s
+      scrapeTimeout: 10s
+      metricRelabelings: []
+      relabelings: []
+      cloudflared:
+        jobLabel: app.kubernetes.io/component
+        honorLabels: false
+        scheme: http
