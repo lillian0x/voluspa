@@ -8,7 +8,7 @@ spec:
     matchLabels:
       app.kubernetes.io/name: cloudflare-tunnel-ingress-controller
   policyTypes:
-    - Ingress
+    - "Ingress"
   ingress:
     - from:
         - namespaceSelector:
@@ -20,5 +20,26 @@ spec:
       ports:
         - protocol: TCP
           port: 9090
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: connector-allow-prometheus
+  namespace: cloudflare-tunnel-system
+spec:
+  podSelector:
+    matchLabels:
+      app: controlled-cloudflared-connector
+  policyTypes:
+    - "Ingress"
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: monitoring
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: prometheus
+      ports:
         - protocol: TCP
           port: 44483
