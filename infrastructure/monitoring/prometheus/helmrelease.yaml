@@ -12,3 +12,12 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: prometheus
+  value:
+    prometheus:
+      prometheusSpec:
+        resources:
+          requests:
+            cpu: 200m
+            memory: 1Gi
+          limits:
+            memory: 2Gi
