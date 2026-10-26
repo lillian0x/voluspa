@@ -28,7 +28,7 @@ spec:
           type: RuntimeDefault
       containers:
         - name: filebrowser
-          image: gtstef/filebrowser:2.0.1-stable
+          image: gtstef/filebrowser:2.0.2-stable
           resources:
             requests:
               cpu: "100m"
