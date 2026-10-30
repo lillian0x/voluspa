@@ -37,7 +37,7 @@ spec:
     cloudflared:
       image:
         repository: cloudflare/cloudflared
-        tag: 2026.10.4
+        tag: 2026.10.7
       replicaCount: 2
       podAntiAffinity: true
       pdb:
