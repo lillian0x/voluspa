@@ -1,7 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "gitAuthor": "Renovate Bot <183957662+lillian0x@users.noreply.github.com>",
-  "extends": ["config:recommended"],
+  "extends": [
+    "config:recommended",
+    "docker:pinDigests"
+  ],
   "kubernetes": {
     "managerFilePatterns": ["/\\.yaml$/"]
   },
