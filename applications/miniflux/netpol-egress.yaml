@@ -15,7 +15,8 @@ spec:
             matchLabels:
               cnpg.io/cluster: miniflux-db
       ports:
-        - {protocol: TCP, port: 5432}
+        - protocol: TCP
+          port: 5432
     - to:
         - ipBlock:
             cidr: 0.0.0.0/0
@@ -25,4 +26,7 @@ spec:
               - 192.168.0.0/16
               - 169.254.0.0/16
       ports:
-        - {protocol: TCP, port: 443}
+        - protocol: UDP
+          port: 443
+        - protocol: TCP
+          port: 443

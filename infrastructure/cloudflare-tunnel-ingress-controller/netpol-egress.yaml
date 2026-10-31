@@ -19,8 +19,10 @@ spec:
               - 192.168.0.0/16
               - 169.254.0.0/16
       ports:
-        - {protocol: TCP, port: 7844}
-        - {protocol: UDP, port: 7844}
+        - protocol: TCP
+          port: 7844
+        - protocol: UDP
+          port: 7844
 ---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -38,7 +40,8 @@ spec:
         - ipBlock:
             cidr: 192.168.0.103/32
       ports:
-        - {protocol: TCP, port: 6443}
+        - protocol: TCP
+          port: 6443
     - to:
         - ipBlock:
             cidr: 0.0.0.0/0
@@ -48,4 +51,7 @@ spec:
               - 192.168.0.0/16
               - 169.254.0.0/16
       ports:
-        - {protocol: TCP, port: 443}
+        - protocol: UDP
+          port: 443
+        - protocol: TCP
+          port: 443
