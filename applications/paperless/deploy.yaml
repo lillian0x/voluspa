@@ -24,7 +24,7 @@ spec:
         seccompProfile: {type: RuntimeDefault}
       initContainers:
         - name: redis
-          image: redis:8.10.3-alpine
+          image: redis:8.10.3-alpine@sha256:21090af93f8324db2f0f0f4f38a7c60369d47d917e000c3423d89d2ae2883537
           restartPolicy: Always
           command:
             - "sh"
@@ -55,7 +55,7 @@ spec:
             - {name: redis-tmp, mountPath: /tmp}
       containers:
         - name: paperless
-          image: ghcr.io/paperless-ngx/paperless-ngx:3.3.4
+          image: ghcr.io/paperless-ngx/paperless-ngx:3.3.4@sha256:9bc6e8248891bcfa6f52fffe8b81e4ea8cae75790c3ec1b9906961a7ba55c969
           ports:
             - {name: http, containerPort: 8000}
           envFrom:

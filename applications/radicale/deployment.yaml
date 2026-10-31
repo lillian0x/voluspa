@@ -23,7 +23,7 @@ spec:
           type: RuntimeDefault
       containers:
         - name: radicale
-          image: tomsquest/docker-radicale:3.9.0.0
+          image: tomsquest/docker-radicale:3.9.0.0@sha256:2f215d0e6a78ff68c280975af6ce580b05976f70c62b51640397e3eb5a7aa0e9
           resources:
             requests:
               memory: 64Mi
