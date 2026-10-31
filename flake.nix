@@ -22,23 +22,26 @@
         pkgs,
         ...
       }: {
-        pre-commit.settings.hooks = {
-          alejandra.enable = true;
-          check-yaml.enable = true;
-          yamlfmt = {
-            enable = true;
-            settings.lint-only = false;
-          };
-          kube-linter = {
-            enable = true;
-            name = "kube-linter";
-            entry = "${pkgs.writeShellScript "kube-linter-check" ''
-              set -euo pipefail
-              ${pkgs.kube-linter}/bin/kube-linter lint .
-            ''}";
-            language = "system";
-            pass_filenames = false;
-            files = "\\.ya?ml$";
+        pre-commit.settings = {
+          excludes = ["gotk-components\\.yaml$"];
+          hooks = {
+            alejandra.enable = true;
+            check-yaml.enable = true;
+            yamlfmt = {
+              enable = true;
+              settings.lint-only = false;
+            };
+            kube-linter = {
+              enable = true;
+              name = "kube-linter";
+              entry = "${pkgs.writeShellScript "kube-linter-check" ''
+                set -euo pipefail
+                ${pkgs.kube-linter}/bin/kube-linter lint .
+              ''}";
+              language = "system";
+              pass_filenames = false;
+              files = "\\.ya?ml$";
+            };
           };
         };
         formatter = pkgs.writeShellScriptBin "pre-commit-run" ''

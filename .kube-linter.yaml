@@ -1,2 +1,4 @@
 checks:
   include:
+  ignorePaths:
+    - "**/gotk-components.yaml"
