@@ -12,6 +12,12 @@
     "managerFilePatterns": ["/\\.ya?ml$/"]
   },
   "packageRules": [
+        {
+      "matchUpdateTypes": ["patch"],
+      "minimumReleaseAge": "3 days",
+      "platformAutomerge": true,
+      "automerge": true
+    },
     {
       "matchDatasources": ["docker"],
       "matchPackageNames": [
