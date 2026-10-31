@@ -22,7 +22,7 @@ spec:
           type: RuntimeDefault
       containers:
         - name: alertmanager-to-github
-          image: ghcr.io/pfnet-research/alertmanager-to-github:v0.3.2
+          image: ghcr.io/pfnet-research/alertmanager-to-github:v0.3.2@sha256:f509dde2b1ec5d1cdddc9a73a426a0cb35a3384bf9e7ec98777a19c1e2874c3c
           resources:
             requests:
               cpu: 1m
