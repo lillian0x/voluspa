@@ -25,7 +25,10 @@
         pre-commit.settings = {
           excludes = ["gotk-components\\.yaml$"];
           hooks = {
-            alejandra.enable = true;
+            alejandra = {
+              enable = true;
+              settings.verbosity = "quiet";
+            };
             check-yaml.enable = true;
             yamlfmt = {
               enable = true;
@@ -34,19 +37,20 @@
             kube-linter = {
               enable = true;
               name = "kube-linter";
-              entry = "${pkgs.writeShellScript "kube-linter-check" ''
-                set -euo pipefail
-                ${pkgs.kube-linter}/bin/kube-linter lint .
-              ''}";
-              language = "system";
+              entry = "${pkgs.kube-linter}/bin/kube-linter lint .";
+              excludes = ["clusters/\w{1,}/flux-system/gotk-components.yaml"];
+              language = "unsupported";
               pass_filenames = false;
               files = "\\.ya?ml$";
             };
           };
         };
-        formatter = pkgs.writeShellScriptBin "pre-commit-run" ''
-          ${pkgs.lib.getExe config.pre-commit.settings.package} run --all-files --config ${config.pre-commit.settings.configFile}
-        '';
+        formatter = let
+          inherit (config.pre-commit.settings) configFile package;
+        in
+          pkgs.writeShellScriptBin "pre-commit-run" ''
+            ${pkgs.lib.getExe package} run --all-files --config ${configFile}
+          '';
         devShells.default = pkgs.mkShell {
           inherit (config.pre-commit) shellHook;
           buildInputs = with pkgs;
