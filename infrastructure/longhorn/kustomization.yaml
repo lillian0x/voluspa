@@ -5,5 +5,3 @@ resources:
   - helmrepository.yaml
   - helmrelease.yaml
   - sealed-secret.yaml
-  - backuptarget.yaml
-  - recurringjob.yaml
