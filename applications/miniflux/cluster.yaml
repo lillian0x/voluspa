@@ -20,6 +20,27 @@ spec:
       memory: 256Mi
     limits:
       memory: 512Mi
+  podSecurityContext:
+    fsGroup: 26
+    runAsGroup: 26
+    runAsNonRoot: true
+    runAsUser: 26
+    seccompProfile:
+      type: RuntimeDefault
+    appArmorProfile:
+      type: Unconfined
+  securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - "ALL"
+    privileged: false
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    seccompProfile:
+      type: RuntimeDefault
+    appArmorProfile:
+      type: Unconfined
   bootstrap:
     recovery:
       database: miniflux
