@@ -19,7 +19,6 @@ spec:
       cpu: 2m
       memory: 256Mi
     limits:
-      cpu: 250m
       memory: 512Mi
   bootstrap:
     recovery:
