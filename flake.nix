@@ -61,6 +61,7 @@
               kustomize
               trivy
               fluxcd
+              kubectl-cnpg
             ]
             ++ config.pre-commit.settings.enabledPackages;
         };
