@@ -60,6 +60,7 @@
             [
               kustomize
               trivy
+              fluxcd
             ]
             ++ config.pre-commit.settings.enabledPackages;
         };
