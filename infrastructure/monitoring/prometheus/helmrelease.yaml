@@ -21,3 +21,9 @@ spec:
             memory: 1Gi
           limits:
             memory: 2Gi
+    grafana:
+      additionalDataSources:
+        - name: Loki
+          type: loki
+          access: proxy
+          url: http://loki-gateway.logging.svc.cluster.local

@@ -1,9 +1,18 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: grafana
+  name: grafana-community
   namespace: logging
 spec:
   type: oci
   interval: 1h
   url: oci://ghcr.io/grafana-community/helm-charts
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: grafana
+  namespace: logging
+spec:
+  interval: 1h
+  url: https://grafana.github.io/helm-charts
