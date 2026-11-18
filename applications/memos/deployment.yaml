@@ -23,7 +23,7 @@ spec:
         fsGroup: 10001
       containers:
         - name: memos
-          image: docker.io/neosmemo/memos:26.11@sha256:087e7dc6b76b31fcd1107a5767398b2a310ced209adb791efd8760c745dc8034
+          image: docker.io/neosmemo/memos:26.11.1
           resources:
             requests:
               memory: 32Mi
