@@ -1,6 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "gitAuthor": "Renovate Bot <183957662+lillian0x@users.noreply.github.com>",
+  "prCreation": "immediate",
+  "prHourlyLimit": 0,
+  "prConcurrentLimit": 0,
   "extends": [
     "config:recommended",
     "docker:pinDigests"
@@ -12,7 +15,7 @@
     "managerFilePatterns": ["/\\.ya?ml$/"]
   },
   "packageRules": [
-        {
+    {
       "matchUpdateTypes": ["patch"],
       "minimumReleaseAge": "3 days",
       "platformAutomerge": true,
@@ -40,7 +43,5 @@
       "matchPackageNames": ["ghcr.io/gtsteffaniak/filebrowser"],
       "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-stable$"
     }
-  ],
-  "prHourlyLimit": 0,
-  "prConcurrentLimit": 0
+  ]
 }
