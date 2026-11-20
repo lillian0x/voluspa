@@ -1,0 +1,99 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: forgejo
+  namespace: forgejo
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: forgejo
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    test:
+      enabled: false
+    replicaCount: 1
+    strategy:
+      type: Recreate
+    image:
+      rootless: true
+      tag: "17.0.2-rootless"
+      digest: "sha256:39362ab93a94c0c9b8b330d2a877ddbb3f02fa8c0cba1b8d686d437b39f36a04"
+    podSecurityContext:
+      fsGroup: 1000
+      seccompProfile:
+        type: RuntimeDefault
+    containerSecurityContext:
+      allowPrivilegeEscalation: false
+      runAsNonRoot: true
+      capabilities:
+        drop:
+          - "ALL"
+      readOnlyRootFilesystem: true
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        memory: 1Gi
+    persistence:
+      enabled: true
+      size: 10Gi
+      storageClass: longhorn
+    service:
+      http:
+        type: ClusterIP
+      ssh:
+        type: ClusterIP # SSH を外部公開するなら LoadBalancer + loadBalancerSourceRanges
+    ingress:
+      enabled: true
+      className: cloudflare-tunnel
+      annotations:
+        cloudflare-tunnel-ingress-controller.strrl.dev/backend-protocol: http
+      hosts:
+        - host: git.x1d.uk
+          paths:
+            - path: /
+              pathType: Prefix
+    gitea:
+      additionalConfigSources:
+        - secret:
+            secretName: forgejo-security-keys
+      oauth:
+        - name: 'SSO'
+          provider: 'openidConnect'
+          existingSecret: forgejo-oauth-secret
+          autoDiscoverUrl: 'https://auth.x1d.uk/.well-known/openid-configuration'
+      config:
+        server:
+          ROOT_URL: https://git.x1d.uk/
+          DISABLE_SSH: true
+          START_SSH_SERVER: false
+        service:
+          DISABLE_REGISTRATION: false # OIDC の自動登録に必要
+          ALLOW_ONLY_EXTERNAL_REGISTRATION: true
+          ENABLE_INTERNAL_SIGNIN: false
+          ENABLE_BASIC_AUTHENTICATION: false # パスワードでの Basic 認証を拒否
+          REQUIRE_SIGNIN_VIEW: true
+          DEFAULT_KEEP_EMAIL_PRIVATE: true
+          DEFAULT_USER_IS_RESTRICTED: true # 新規ユーザーは制限付きで開始（任意）
+        oauth2_client:
+          ENABLE_AUTO_REGISTRATION: true
+          USERNAME: preferred_username
+          ACCOUNT_LINKING: disabled
+          UPDATE_AVATAR: false
+          OPENID_CONNECT_SCOPES: "email profile groups"
+        session:
+          COOKIE_SECURE: true
+          SAME_SITE: lax
+        security:
+          PASSWORD_HASH_ALGO: argon2
+          GLOBAL_TWO_FACTOR_REQUIREMENT: none
+          DISABLE_QUERY_AUTH_TOKEN: true # URL クエリでの API トークン送信を拒否
+        admin:
+          EXTERNAL_USER_DISABLE_FEATURES: "manage_password,deletion"
