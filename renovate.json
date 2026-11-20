@@ -16,12 +16,6 @@
   },
   "packageRules": [
     {
-      "matchUpdateTypes": ["patch"],
-      "minimumReleaseAge": "3 days",
-      "platformAutomerge": true,
-      "automerge": true
-    },
-    {
       "matchDatasources": ["docker"],
       "matchPackageNames": [
         "lscr.io/linuxserver/calibre-web"
