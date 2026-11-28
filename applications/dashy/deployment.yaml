@@ -24,7 +24,7 @@ spec:
           type: RuntimeDefault
       containers:
         - name: dashy
-          image: lissy93/dashy:4.9.19@sha256:7243dd17b584490c740d24b18e77e464ef3aa4616dfc1fc5a347dfab6057dd9f
+          image: lissy93/dashy:4.10.3@sha256:84f10e0d4fd2ec1480bfd29dd5af39afe08162c57a4b24e84f221f48ac6f9c0a
           resources:
             requests:
               memory: 32Mi
